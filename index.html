@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>دل باستا | طلب البوفيه</title>
+<title>Del Pasta | Buffet Order</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -18,7 +18,7 @@ html{scroll-behavior:smooth;}
 body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
 
 /* LANG */
-.lang-toggle{position:fixed;top:16px;left:16px;z-index:999;background:rgba(255,255,255,0.95);border:1.5px solid var(--border);border-radius:30px;display:flex;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1);}
+.lang-toggle{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;background:rgba(255,255,255,0.97);border:1.5px solid var(--border);border-radius:30px;display:flex;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.15);}
 .lang-btn{padding:6px 14px;font-family:'Cairo',sans-serif;font-size:13px;font-weight:600;border:none;background:transparent;cursor:pointer;color:var(--text3);transition:all .2s;}
 .lang-btn.active{background:var(--brand);color:#fff;}
 
@@ -194,6 +194,29 @@ body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-h
 .error-msg{color:#DC2626;font-size:12px;margin-top:4px;display:none;}
 .shake{animation:shake .35s ease;}
 @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+
+/* BREAKFAST */
+.brkf-section{margin-bottom:24px;}
+.brkf-cat-title{font-size:14px;font-weight:800;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.brkf-item{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--surface);margin-bottom:8px;transition:all .2s;}
+.brkf-item.active{border-color:var(--brand);background:var(--brand-pale);}
+.brkf-item-info{flex:1;}
+.brkf-item-name{font-size:13px;font-weight:700;color:var(--text);}
+.brkf-item-price{font-size:12px;color:var(--brand);font-weight:600;margin-top:2px;}
+.brkf-qty{display:flex;align-items:center;gap:10px;}
+.brkf-qty-btn{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--brand);background:var(--surface);color:var(--brand);font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1;}
+.brkf-qty-btn:hover{background:var(--brand);color:#fff;}
+.brkf-qty-num{font-size:15px;font-weight:800;color:var(--text);min-width:20px;text-align:center;}
+.brkf-summary-box{background:var(--brand-pale);border:1.5px solid var(--brand);border-radius:var(--radius);padding:16px;margin-top:16px;}
+.brkf-summary-title{font-size:14px;font-weight:800;color:var(--brand);margin-bottom:12px;}
+.brkf-sum-row{display:flex;justify-content:space-between;font-size:13px;color:var(--text2);padding:4px 0;border-bottom:1px dashed var(--border);}
+.brkf-sum-row:last-child{border-bottom:none;}
+.brkf-sum-total{display:flex;justify-content:space-between;font-size:15px;font-weight:800;color:var(--text);margin-top:10px;padding-top:10px;border-top:2px solid var(--brand);}
+.brkf-delivery-note{font-size:12px;color:var(--text3);margin-top:8px;line-height:1.6;}
+.guests-stepper{display:flex;align-items:center;gap:16px;margin-top:8px;}
+.guests-stepper-btn{width:38px;height:38px;border-radius:50%;border:2px solid var(--brand);background:var(--surface);color:var(--brand);font-size:22px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.guests-stepper-btn:hover{background:var(--brand);color:#fff;}
+.guests-stepper-num{font-size:22px;font-weight:900;color:var(--text);min-width:48px;text-align:center;}
 </style>
 </head>
 <body>
@@ -223,45 +246,45 @@ body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-h
   <div class="progress-steps">
     <div class="step-dot">
       <div class="step-circle active" id="sc1">1</div>
-      <div class="step-label active" id="sl1">التفاصيل</div>
+      <div class="step-label active" id="sl1" data-ar="التفاصيل" data-en="Details">التفاصيل</div>
     </div>
     <div class="step-line" id="line1"></div>
     <div class="step-dot">
       <div class="step-circle" id="sc2">2</div>
-      <div class="step-label" id="sl2">الباقة</div>
+      <div class="step-label" id="sl2" data-ar="الباقة" data-en="Package">الباقة</div>
     </div>
     <div class="step-line" id="line2"></div>
     <div class="step-dot">
       <div class="step-circle" id="sc3">3</div>
-      <div class="step-label" id="sl3">الأصناف</div>
+      <div class="step-label" id="sl3" data-ar="الأصناف" data-en="Dishes">الأصناف</div>
     </div>
     <div class="step-line" id="line3"></div>
     <div class="step-dot">
       <div class="step-circle" id="sc4">4</div>
-      <div class="step-label" id="sl4">التأكيد</div>
+      <div class="step-label" id="sl4" data-ar="التأكيد" data-en="Confirm">التأكيد</div>
     </div>
   </div>
 </div>
 
 <!-- STEP 1 -->
 <div class="section active" id="step1">
-  <div class="section-title">تفاصيل المناسبة</div>
-  <div class="section-sub">أخبرنا عن مناسبتك لنقدم أفضل خدمة</div>
+  <div class="section-title" data-ar="تفاصيل المناسبة" data-en="Event Details">تفاصيل المناسبة</div>
+  <div class="section-sub" data-ar="أخبرنا عن مناسبتك لنقدم أفضل خدمة" data-en="Tell us about your event so we can provide the best service">أخبرنا عن مناسبتك لنقدم أفضل خدمة</div>
 
   <div class="field">
-    <label>الاسم الكريم <span class="req">*</span></label>
-    <input type="text" id="f-name" placeholder="اكتب اسمك هنا">
-    <div class="error-msg" id="err-name">الرجاء إدخال اسمك</div>
+    <label data-ar="الاسم الكريم" data-en="Full Name">الاسم الكريم <span class="req">*</span></label>
+    <input type="text" id="f-name" data-placeholder-ar="اكتب اسمك هنا" data-placeholder-en="Enter your name" placeholder="اكتب اسمك هنا">
+    <div class="error-msg" id="err-name" data-ar="الرجاء إدخال اسمك" data-en="Please enter your name">الرجاء إدخال اسمك</div>
   </div>
 
   <div class="field">
-    <label>رقم الجوال <span class="req">*</span></label>
+    <label data-ar="رقم الجوال" data-en="Mobile Number">رقم الجوال <span class="req">*</span></label>
     <input type="tel" id="f-phone" placeholder="+968 XXXXXXXX">
-    <div class="error-msg" id="err-phone">الرجاء إدخال رقم الجوال</div>
+    <div class="error-msg" id="err-phone" data-ar="الرجاء إدخال رقم الجوال" data-en="Please enter your mobile number">الرجاء إدخال رقم الجوال</div>
   </div>
 
   <div class="field">
-    <label>نوع الوجبة <span class="req">*</span></label>
+    <label data-ar="نوع الوجبة" data-en="Meal Type">نوع الوجبة <span class="req">*</span></label>
     <div class="meal-types">
       <div class="meal-card" onclick="selectMeal('breakfast')" id="meal-breakfast">
         <div class="meal-icon-svg">
@@ -299,193 +322,227 @@ body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-h
         <div class="meal-name" data-ar="عشاء" data-en="Dinner">عشاء</div>
       </div>
     </div>
-    <div class="error-msg" id="err-meal">الرجاء اختيار نوع الوجبة</div>
+    <div class="error-msg" id="err-meal" data-ar="الرجاء اختيار نوع الوجبة" data-en="Please select a meal type">الرجاء اختيار نوع الوجبة</div>
   </div>
 
   <div class="field">
-    <label>تاريخ المناسبة <span class="req">*</span></label>
+    <label data-ar="تاريخ المناسبة" data-en="Event Date">تاريخ المناسبة <span class="req">*</span></label>
     <input type="date" id="f-date">
     <div id="day-display" style="font-size:13px;color:var(--brand);margin-top:5px;font-weight:700;"></div>
-    <div class="error-msg" id="err-date">الرجاء اختيار التاريخ</div>
+    <div class="error-msg" id="err-date" data-ar="الرجاء اختيار التاريخ" data-en="Please select the event date">الرجاء اختيار التاريخ</div>
   </div>
 
   <div class="field">
-    <label>الولاية <span class="req">*</span></label>
+    <label data-ar="الولاية" data-en="Governorate">الولاية <span class="req">*</span></label>
     <select id="f-gov">
-      <option value="">اختر الولاية</option>
-      <option value="صحار">صحار — توصيل مجاني ✓</option>
-      <option value="شناص">شناص</option>
-      <option value="لوى">لوى</option>
-      <option value="صحم">صحم</option>
-      <option value="خابورة">خابورة</option>
-      <option value="السويق">السويق</option>
-      <option value="الرستاق">الرستاق</option>
-      <option value="نخل">نخل</option>
-      <option value="العوابي">العوابي</option>
-      <option value="وادي المعاول">وادي المعاول</option>
-      <option value="مسقط">مسقط</option>
-      <option value="أخرى">أخرى</option>
+      <option value="" data-ar="اختر الولاية" data-en="Select Governorate">اختر الولاية</option>
+      <option value="صحار" data-ar="صحار — توصيل مجاني ✓" data-en="Sohar — Free delivery ✓">صحار — توصيل مجاني ✓</option>
+      <option value="شناص" data-ar="شناص" data-en="Shinas">شناص</option>
+      <option value="لوى" data-ar="لوى" data-en="Liwa">لوى</option>
+      <option value="صحم" data-ar="صحم" data-en="Saham">صحم</option>
+      <option value="خابورة" data-ar="خابورة" data-en="Khabourah">خابورة</option>
+      <option value="السويق" data-ar="السويق" data-en="Al Suwaiq">السويق</option>
+      <option value="الرستاق" data-ar="الرستاق" data-en="Al Rustaq">الرستاق</option>
+      <option value="نخل" data-ar="نخل" data-en="Nakhal">نخل</option>
+      <option value="العوابي" data-ar="العوابي" data-en="Al Awabi">العوابي</option>
+      <option value="وادي المعاول" data-ar="وادي المعاول" data-en="Wadi Al Maawil">وادي المعاول</option>
+      <option value="المصنعة" data-ar="المصنعة" data-en="Al Musanaah">المصنعة</option>
+      <option value="بركاء" data-ar="بركاء" data-en="Barka">بركاء</option>
+      <option value="مسقط" data-ar="مسقط" data-en="Muscat">مسقط</option>
+      <option value="أخرى" data-ar="أخرى" data-en="Other">أخرى</option>
     </select>
-    <div class="error-msg" id="err-gov">الرجاء اختيار الولاية</div>
+    <div id="gov-other-wrap" style="display:none;margin-top:8px;">
+      <input type="text" id="f-gov-other" placeholder="اكتب اسم منطقتك أو ولايتك..." style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);background:var(--surface);outline:none;">
+    </div>
+    <div class="error-msg" id="err-gov" data-ar="الرجاء اختيار الولاية" data-en="Please select a governorate">الرجاء اختيار الولاية</div>
   </div>
 
   <div class="field">
-    <label>رابط الموقع (اختياري)</label>
-    <input type="url" id="f-location" placeholder="https://maps.google.com/...">
-    <div class="hint">شارك رابط موقعك من خرائط جوجل لتسهيل التوصيل</div>
+    <label data-ar="رابط الموقع (اختياري)" data-en="Location Link (Optional)">رابط الموقع (اختياري)</label>
+    <input type="url" id="f-location" data-placeholder-ar="https://maps.google.com/..." data-placeholder-en="https://maps.google.com/..." placeholder="https://maps.google.com/...">
+    <div class="hint" data-ar="شارك رابط موقعك من خرائط جوجل لتسهيل التوصيل" data-en="Share your Google Maps location link to help with delivery">شارك رابط موقعك من خرائط جوجل لتسهيل التوصيل</div>
   </div>
 
   <div class="nav-row">
-    <button class="btn-next" onclick="goStep(2)">التالي ←</button>
+    <button class="btn-next" onclick="goStep(2)" data-ar="التالي ←" data-en="Next →">التالي ←</button>
   </div>
 </div>
 
 <!-- STEP 2 -->
 <div class="section" id="step2">
-  <div class="section-title">اختر باقتك</div>
-  <div class="section-sub">الباقة الأساسية مناسبة للمناسبات الخاصة والتجمعات</div>
 
-  <div class="pkg-grid">
-    <div class="pkg-card selected" onclick="selectPkg('basic')" id="pkg-basic">
-      <div class="pkg-check"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5 5.5-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <span class="pkg-badge">الباقة الأساسية</span>
-      <div class="pkg-name">بوفيه دل باستا الأساسي</div>
-      <div class="pkg-desc">تجربة بوفيه متكاملة للمناسبات الخاصة والتجمعات العائلية</div>
-      <div style="font-size:11px;color:var(--text2);line-height:2;margin-bottom:8px;">
-        🍖 2 أصناف رئيسية &nbsp;|&nbsp; 🥗 2 سلطات<br>
-        🥙 3 خفايف &nbsp;|&nbsp; 🍮 2 حلويات &nbsp;|&nbsp; 🥤 مشروبات
+  <!-- للغداء والعشاء فقط -->
+  <div id="step2-lunch-dinner">
+    <div class="section-title" data-ar="اختر باقتك" data-en="Choose Your Package">اختر باقتك</div>
+    <div class="section-sub" data-ar="الباقة الأساسية مناسبة للمناسبات الخاصة والتجمعات" data-en="The basic package is perfect for private events and gatherings">الباقة الأساسية مناسبة للمناسبات الخاصة والتجمعات</div>
+    <div class="pkg-grid">
+      <div class="pkg-card selected" onclick="selectPkg('basic')" id="pkg-basic">
+        <div class="pkg-check"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3.5 3.5 5.5-6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="pkg-badge" data-ar="الباقة الأساسية" data-en="Basic Package">الباقة الأساسية</span>
+        <div class="pkg-name" data-ar="بوفيه دل باستا الأساسي" data-en="Del Pasta Basic Buffet">بوفيه دل باستا الأساسي</div>
+        <div class="pkg-desc" data-ar="تجربة بوفيه متكاملة للمناسبات الخاصة والتجمعات العائلية" data-en="A complete buffet experience for private events and family gatherings">تجربة بوفيه متكاملة للمناسبات الخاصة والتجمعات العائلية</div>
+        <div style="font-size:11px;color:var(--text2);line-height:2;margin-bottom:8px;" data-ar="🍖 2 أصناف رئيسية | 🥗 2 سلطات<br>🥙 3 خفايف | 🍮 2 حلويات | 🥤 مشروبات" data-en="🍖 2 Main Dishes | 🥗 2 Salads<br>🥙 3 Appetizers | 🍮 2 Desserts | 🥤 Drinks">
+          🍖 2 أصناف رئيسية &nbsp;|&nbsp; 🥗 2 سلطات<br>
+          🥙 3 خفايف &nbsp;|&nbsp; 🍮 2 حلويات &nbsp;|&nbsp; 🥤 مشروبات
+        </div>
+        <div class="pkg-price-box">
+          <div class="pkg-price" id="price-val">—</div>
+          <div class="pkg-price-label" data-ar="ر.ع للباقة" data-en="OMR / Package">ر.ع للباقة</div>
+        </div>
       </div>
-      <div class="pkg-price-box">
-        <div class="pkg-price" id="price-val">—</div>
-        <div class="pkg-price-label">ر.ع للباقة</div>
-      </div>
+    </div>
+    <div class="guest-section">
+      <label data-ar="عدد الضيوف" data-en="Number of Guests">عدد الضيوف <span class="req" style="color:var(--brand)">*</span></label>
+      <select id="f-guests" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);background:var(--surface);outline:none;" onchange="updatePrice()">
+        <option value="">اختر نطاق العدد</option>
+      </select>
+      <div class="hint" style="margin-top:6px;" data-ar="🚚 التوصيل في صحار مجاني ✓ — باقي الولايات يتراوح بين 7 - 39 ر.ع حسب الموقع" data-en="🚚 Free delivery in Sohar ✓ — Other areas range from 7 - 39 OMR depending on location">🚚 التوصيل في صحار مجاني ✓ — باقي الولايات يتراوح بين 7 - 39 ر.ع حسب الموقع</div>
+      <div class="error-msg" id="err-guests" data-ar="الرجاء اختيار عدد الضيوف" data-en="Please select number of guests">الرجاء اختيار عدد الضيوف</div>
     </div>
   </div>
 
-  <div class="guest-section">
-    <label>عدد الضيوف <span class="req" style="color:var(--brand)">*</span></label>
-    <select id="f-guests" style="width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'Cairo',sans-serif;font-size:14px;color:var(--text);background:var(--surface);outline:none;" onchange="updatePrice()">
-      <option value="">اختر نطاق العدد</option>
-    </select>
-    <div class="hint" style="margin-top:6px;">التوصيل في صحار مجاني — باقي الولايات يتحدد بحسب الموقع والعدد</div>
-    <div class="error-msg" id="err-guests">الرجاء اختيار عدد الضيوف</div>
+  <!-- للريوق فقط -->
+  <div id="step2-breakfast" style="display:none;">
+    <div class="section-title" data-ar="🌅 إفطار دل باستا" data-en="🌅 Del Pasta Breakfast">🌅 إفطار دل باستا</div>
+    <div class="section-sub" data-ar="اختر ما تشاء بكل حرية — لا قيود ولا باقات ثابتة" data-en="Choose freely — no limits, no fixed packages">اختر ما تشاء بكل حرية — لا قيود ولا باقات ثابتة</div>
+    <div class="guest-section">
+      <label data-ar="عدد المعازيم" data-en="Number of Guests">عدد المعازيم <span class="req" style="color:var(--brand)">*</span></label>
+      <div class="guests-stepper">
+        <button class="guests-stepper-btn" onclick="changeBrkfGuests(-5)">−</button>
+        <span class="guests-stepper-num" id="brkf-guests-num">10</span>
+        <button class="guests-stepper-btn" onclick="changeBrkfGuests(5)">+</button>
+      </div>
+      <div class="hint" style="margin-top:6px;" data-ar="الحد الأدنى 10 أشخاص" data-en="Minimum 10 guests">الحد الأدنى 10 أشخاص</div>
+    </div>
   </div>
 
   <div class="nav-row">
-    <button class="btn-back" onclick="goStep(1)">→ السابق</button>
-    <button class="btn-next" onclick="goStep(3)">التالي ←</button>
+    <button class="btn-back" onclick="goStep(1)" data-ar="→ السابق" data-en="← Back">→ السابق</button>
+    <button class="btn-next" onclick="goStep(3)" data-ar="التالي ←" data-en="Next →">التالي ←</button>
   </div>
 </div>
 
 <!-- STEP 3 -->
 <div class="section" id="step3">
-  <div class="section-title">اختر أصنافك</div>
-  <div class="section-sub">✨ اختر بعناية، كل طبق يضيف طابعاً مميزاً لضيافتك</div>
 
-  <div class="category-block">
-    <div class="cat-header">
-      <div class="cat-title">🍖 الأصناف الرئيسية</div>
-      <span class="cat-count-badge" id="cnt-main">0 / 2</span>
+  <!-- للغداء والعشاء -->
+  <div id="step3-lunch-dinner">
+    <div class="section-title" data-ar="اختر أصنافك" data-en="Choose Your Items">اختر أصنافك</div>
+    <div class="section-sub" data-ar="✨ اختر بعناية، كل طبق يضيف طابعاً مميزاً لضيافتك" data-en="✨ Choose carefully — each dish adds a special touch">✨ اختر بعناية، كل طبق يضيف طابعاً مميزاً لضيافتك</div>
+    <div class="category-block">
+      <div class="cat-header"><div class="cat-title" data-ar="🍖 الأصناف الرئيسية" data-en="🍖 Main Dishes">🍖 الأصناف الرئيسية</div><span class="cat-count-badge" id="cnt-main">0 / 2</span></div>
+      <div class="checkbox-grid" id="grp-main"></div>
     </div>
-    <div class="checkbox-grid" id="grp-main"></div>
-  </div>
-  <div class="category-block">
-    <div class="cat-header">
-      <div class="cat-title">🥙 الخفايف</div>
-      <span class="cat-count-badge" id="cnt-app">0 / 3</span>
+    <div class="category-block">
+      <div class="cat-header"><div class="cat-title" data-ar="🥙 الخفايف" data-en="🥙 Appetizers">🥙 الخفايف</div><span class="cat-count-badge" id="cnt-app">0 / 3</span></div>
+      <div class="checkbox-grid" id="grp-app"></div>
     </div>
-    <div class="checkbox-grid" id="grp-app"></div>
-  </div>
-  <div class="category-block">
-    <div class="cat-header">
-      <div class="cat-title">🥗 السلطات</div>
-      <span class="cat-count-badge" id="cnt-sal">0 / 2</span>
+    <div class="category-block">
+      <div class="cat-header"><div class="cat-title" data-ar="🥗 السلطات" data-en="🥗 Salads">🥗 السلطات</div><span class="cat-count-badge" id="cnt-sal">0 / 2</span></div>
+      <div class="checkbox-grid" id="grp-sal"></div>
     </div>
-    <div class="checkbox-grid" id="grp-sal"></div>
-  </div>
-  <div class="category-block">
-    <div class="cat-header">
-      <div class="cat-title">🍮 الحلويات</div>
-      <span class="cat-count-badge" id="cnt-des">0 / 2</span>
+    <div class="category-block">
+      <div class="cat-header"><div class="cat-title" data-ar="🍮 الحلويات" data-en="🍮 Desserts">🍮 الحلويات</div><span class="cat-count-badge" id="cnt-des">0 / 2</span></div>
+      <div class="checkbox-grid" id="grp-des"></div>
     </div>
-    <div class="checkbox-grid" id="grp-des"></div>
-  </div>
-  <div class="category-block">
-    <div class="cat-header">
-      <div class="cat-title">🥤 المشروبات</div>
-      <span class="cat-count-badge" id="cnt-drk">اختر 1</span>
+    <div class="category-block">
+      <div class="cat-header"><div class="cat-title" data-ar="🥤 المشروبات" data-en="🥤 Drinks">🥤 المشروبات</div><span class="cat-count-badge" id="cnt-drk">اختر 1</span></div>
+      <div class="checkbox-grid" id="grp-drk"></div>
+      <div class="error-msg" id="err-drinks" data-ar="الرجاء اختيار نوع المشروبات" data-en="Please select a drink option">الرجاء اختيار نوع المشروبات</div>
     </div>
-    <div class="checkbox-grid" id="grp-drk"></div>
-    <div class="error-msg" id="err-drinks">الرجاء اختيار نوع المشروبات</div>
+    <div class="extras-box">
+      <p data-ar="💡 تريد إضافة صنف أكثر من المحدد؟ اكتبه هنا وسنتواصل لتحديد سعر الإضافة." data-en="💡 Want more than the limit? Write it here and we will contact you.">💡 تريد إضافة صنف أكثر من المحدد؟ اكتبه هنا وسنتواصل لتحديد سعر الإضافة.</p>
+      <textarea id="f-extras" style="width:100%;margin-top:8px;padding:10px;border:1.5px solid #F5A623;border-radius:8px;font-family:'Cairo',sans-serif;font-size:13px;resize:vertical;min-height:60px;background:#fff;outline:none;" placeholder="مثال: أريد 4 خفايف بدل 3..."></textarea>
+    </div>
   </div>
 
-  <div class="extras-box">
-    <p>💡 تريد إضافة صنف أكثر من المحدد؟ اكتبه هنا وسنتواصل لتحديد سعر الإضافة.</p>
-    <textarea id="f-extras" style="width:100%;margin-top:8px;padding:10px;border:1.5px solid #F5A623;border-radius:8px;font-family:'Cairo',sans-serif;font-size:13px;resize:vertical;min-height:60px;background:#fff;outline:none;" placeholder="مثال: أريد 4 خفايف بدل 3..."></textarea>
+  <!-- للريوق فقط -->
+  <div id="step3-breakfast" style="display:none;">
+    <div class="section-title" data-ar="🌅 اختر أصناف الإفطار" data-en="🌅 Choose Breakfast Items">🌅 اختر أصناف الإفطار</div>
+    <div class="section-sub" data-ar="اختر ما تشاء — كل قسم اختياري بدون قيود" data-en="Choose what you like — every section is optional, no limits">اختر ما تشاء — كل قسم اختياري بدون قيود</div>
+    <div class="brkf-section"><div class="brkf-cat-title" id="brkf-title-main">🍲 أطباق رئيسية</div><div id="brkf-grp-main"></div></div>
+    <div class="brkf-section"><div class="brkf-cat-title" id="brkf-title-snacks">🥙 خفايف ومقبلات</div><div id="brkf-grp-snacks"></div></div>
+    <div class="brkf-section"><div class="brkf-cat-title" id="brkf-title-desserts">🍮 حلويات</div><div id="brkf-grp-desserts"></div></div>
+    <div class="brkf-section"><div class="brkf-cat-title" id="brkf-title-salads">🥗 سلطات</div><div id="brkf-grp-salads"></div></div>
+    <div class="brkf-section"><div class="brkf-cat-title" id="brkf-title-drinks">☕ مشروبات</div><div id="brkf-grp-drinks"></div></div>
+    <div class="brkf-summary-box" id="brkf-summary-box" style="display:none;">
+      <div class="brkf-summary-title" data-ar="📋 ملخص طلبك" data-en="📋 Your Order Summary">📋 ملخص طلبك</div>
+      <div id="brkf-sum-rows"></div>
+      <div class="brkf-sum-total"><span data-ar="المجموع" data-en="Total">المجموع</span><span id="brkf-sum-total">0.000 ر.ع</span></div>
+      <div class="brkf-delivery-note">
+        📦 <b data-ar="التوصيل والتنظيم:" data-en="Delivery & Setup:">التوصيل والتنظيم:</b>
+        <span data-ar="19 - 39 ر.ع (80 شخص وأكثر: 50 - 60 ر.ع)" data-en="19 - 39 OMR (80+ guests: 50 - 60 OMR)">19 - 39 ر.ع (80 شخص وأكثر: 50 - 60 ر.ع)</span><br>
+        <span data-ar="سنتواصل معك لتأكيد رسوم التوصيل بعد استلام الطلب" data-en="We will contact you to confirm delivery fees after receiving your order">سنتواصل معك لتأكيد رسوم التوصيل بعد استلام الطلب</span>
+      </div>
+    </div>
   </div>
 
   <div class="field" style="margin-top:16px;">
-    <label>ملاحظات أو طلبات خاصة</label>
+    <label data-ar="ملاحظات أو طلبات خاصة" data-en="Notes or Special Requests">ملاحظات أو طلبات خاصة</label>
     <textarea id="f-notes" placeholder="أي تفاصيل إضافية..."></textarea>
   </div>
 
   <div class="nav-row">
-    <button class="btn-back" onclick="goStep(2)">→ السابق</button>
-    <button class="btn-next" onclick="goStep(4)">مراجعة الطلب ←</button>
+    <button class="btn-back" onclick="goStep(2)" data-ar="→ السابق" data-en="← Back">→ السابق</button>
+    <button class="btn-next" onclick="goStep(4)" data-ar="مراجعة الطلب ←" data-en="Review Order →">مراجعة الطلب ←</button>
   </div>
 </div>
 
 <!-- STEP 4 -->
 <div class="section" id="step4">
-  <div class="section-title">مراجعة الطلب</div>
-  <div class="section-sub">تأكد من تفاصيل طلبك قبل الإرسال</div>
+  <div class="section-title" data-ar="مراجعة الطلب" data-en="Review Order">مراجعة الطلب</div>
+  <div class="section-sub" data-ar="تأكد من تفاصيل طلبك قبل الإرسال" data-en="Please review your order details before submitting">تأكد من تفاصيل طلبك قبل الإرسال</div>
 
   <div class="summary-card">
     <div class="summary-header">
-      <h3>تفاصيل المناسبة</h3>
+      <h3 data-ar="تفاصيل المناسبة" data-en="Event Details">تفاصيل المناسبة</h3>
       <span class="order-ref-tag" id="ref-display"></span>
     </div>
     <div class="summary-body">
-      <div class="summary-row"><span class="sum-key">الاسم</span><span class="sum-val ar" id="sum-name">—</span></div>
-      <div class="summary-row"><span class="sum-key">الجوال</span><span class="sum-val ar" id="sum-phone">—</span></div>
-      <div class="summary-row"><span class="sum-key">الوجبة</span><span class="sum-val ar" id="sum-meal">—</span></div>
-      <div class="summary-row"><span class="sum-key">التاريخ</span><span class="sum-val ar" id="sum-date">—</span></div>
-      <div class="summary-row"><span class="sum-key">الولاية</span><span class="sum-val ar" id="sum-gov">—</span></div>
-      <div class="summary-row"><span class="sum-key">عدد الضيوف</span><span class="sum-val ar" id="sum-guests">—</span></div>
+      <div class="summary-row"><span class="sum-key" data-ar="الاسم" data-en="Name">الاسم</span><span class="sum-val ar" id="sum-name">—</span></div>
+      <div class="summary-row"><span class="sum-key" data-ar="الجوال" data-en="Mobile">الجوال</span><span class="sum-val ar" id="sum-phone">—</span></div>
+      <div class="summary-row"><span class="sum-key" data-ar="الوجبة" data-en="Meal Type">الوجبة</span><span class="sum-val ar" id="sum-meal">—</span></div>
+      <div class="summary-row"><span class="sum-key" data-ar="التاريخ" data-en="Date">التاريخ</span><span class="sum-val ar" id="sum-date">—</span></div>
+      <div class="summary-row"><span class="sum-key" data-ar="الولاية" data-en="Governorate">الولاية</span><span class="sum-val ar" id="sum-gov">—</span></div>
+      <div class="summary-row"><span class="sum-key" data-ar="عدد الضيوف" data-en="Guests">عدد الضيوف</span><span class="sum-val ar" id="sum-guests">—</span></div>
     </div>
   </div>
 
   <div class="summary-card">
-    <div class="summary-header"><h3>الأصناف المختارة</h3></div>
-    <div class="summary-body">
-      <div class="summary-row"><span class="sum-key">الرئيسية</span><div class="chips" id="sum-main"></div></div>
-      <div class="summary-row"><span class="sum-key">الخفايف</span><div class="chips" id="sum-app"></div></div>
-      <div class="summary-row"><span class="sum-key">السلطات</span><div class="chips" id="sum-sal"></div></div>
-      <div class="summary-row"><span class="sum-key">الحلويات</span><div class="chips" id="sum-des"></div></div>
-      <div class="summary-row"><span class="sum-key">المشروبات</span><div class="chips" id="sum-drk"></div></div>
-      <div class="summary-row" id="sum-extras-row" style="display:none"><span class="sum-key">إضافات</span><span class="sum-val ar" id="sum-extras"></span></div>
-      <div class="summary-row" id="sum-notes-row" style="display:none"><span class="sum-key">ملاحظات</span><span class="sum-val ar" id="sum-notes"></span></div>
+    <div class="summary-header"><h3 data-ar="الأصناف المختارة" data-en="Selected Dishes">الأصناف المختارة</h3></div>
+    <div class="summary-body" id="dishes-summary-body">
+      <div class="summary-row"><span class="sum-key" data-ar="الرئيسية" data-en="Main">الرئيسية</span><div class="chips" id="sum-main"></div></div>
+      <div class="summary-row"><span class="sum-key" data-ar="الخفايف" data-en="Appetizers">الخفايف</span><div class="chips" id="sum-app"></div></div>
+      <div class="summary-row"><span class="sum-key" data-ar="السلطات" data-en="Salads">السلطات</span><div class="chips" id="sum-sal"></div></div>
+      <div class="summary-row"><span class="sum-key" data-ar="الحلويات" data-en="Desserts">الحلويات</span><div class="chips" id="sum-des"></div></div>
+      <div class="summary-row"><span class="sum-key" data-ar="المشروبات" data-en="Drinks">المشروبات</span><div class="chips" id="sum-drk"></div></div>
+      <div class="summary-row" id="sum-extras-row" style="display:none"><span class="sum-key" data-ar="إضافات" data-en="Extras">إضافات</span><span class="sum-val ar" id="sum-extras"></span></div>
+      <div class="summary-row" id="sum-notes-row" style="display:none"><span class="sum-key" data-ar="ملاحظات" data-en="Notes">ملاحظات</span><span class="sum-val ar" id="sum-notes"></span></div>
     </div>
   </div>
 
   <div class="total-row">
-    <div class="total-label">💰 إجمالي الباقة</div>
-    <div class="total-amount"><span id="sum-total">—</span> <span>ر.ع</span></div>
+    <div class="total-label" data-ar="💰 إجمالي الباقة" data-en="💰 Package Total">💰 إجمالي الباقة</div>
+    <div class="total-amount"><span id="sum-total">—</span> <span data-ar="ر.ع" data-en="OMR">ر.ع</span></div>
   </div>
 
-  <div class="wa-hint" style="margin-top:12px;">🟢 ستنتقل إلى واتساب مع تفاصيل طلبك — فقط اضغط إرسال</div>
+  <div id="step4-delivery-note" style="background:#FEF3C7;border:1.5px solid #F59E0B;border-radius:var(--radius-sm);padding:13px 16px;margin-top:12px;font-size:12px;color:#92400E;line-height:1.7;">
+    📦 <b>رسوم التوصيل والتنظيم:</b> من 7 إلى 39 ر.ع حسب الموقع (مجاني في صحار ✓). للطلبات فوق 80 شخص: 50–60 ر.ع. سنتواصل لتأكيد التفاصيل بعد استلام طلبك.
+  </div>
+
+  <div class="wa-hint" data-ar="🟢 ستنتقل إلى واتساب مع تفاصيل طلبك — فقط اضغط إرسال" data-en="🟢 You will be redirected to WhatsApp with your order details — just press send" style="margin-top:12px;">🟢 ستنتقل إلى واتساب مع تفاصيل طلبك — فقط اضغط إرسال</div>
 
   <button class="wa-btn" onclick="sendWhatsApp()">
     <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    إرسال الطلب عبر واتساب
+    <span data-ar="إرسال الطلب عبر واتساب" data-en="Send Order via WhatsApp">إرسال الطلب عبر واتساب</span>
   </button>
 
   <div class="client-msg-box">
-    <p>📩 سيصلك رد برقم طلبك فور استلامنا للرسالة، وسنتواصل لتأكيد التفاصيل.</p>
+    <p data-ar="📩 سيصلك رد برقم طلبك فور استلامنا للرسالة، وسنتواصل لتأكيد التفاصيل." data-en="📩 You will receive a reply with your order number once we receive your message, and we will contact you to confirm the details.">📩 سيصلك رد برقم طلبك فور استلامنا للرسالة، وسنتواصل لتأكيد التفاصيل.</p>
   </div>
 
   <div class="nav-row">
-    <button class="btn-back" onclick="goStep(3)">→ تعديل الطلب</button>
+    <button class="btn-back" onclick="goStep(3)" data-ar="→ تعديل الطلب" data-en="← Edit Order">→ تعديل الطلب</button>
   </div>
 </div>
 
@@ -493,28 +550,194 @@ body{font-family:'Cairo',sans-serif;background:var(--bg);color:var(--text);min-h
 <div class="section" id="step5">
   <div class="success-wrap">
     <div class="success-logo"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAGMAY8DASIAAhEBAxEB/8QAHAABAAICAwEAAAAAAAAAAAAAAAYHBQgBAwQC/8QAVRAAAQMCAgMHEQMKAwYGAwAAAQACAwQFBhEHEiETMUFRc5PRCBQVFiIyNTZSVFVhcYGRscF0obMjMzdCYnWUlbLTNHK0FyQlgpKiJ0NEU2TwVoPh/8QAGwEBAAMBAQEBAAAAAAAAAAAAAAMEBQYBAgf/xAA7EQABAgMDCAgFBAMBAQEAAAAAAQIDBBEFIXESMTRRUpGx0QYTFRZBgaHBFFNhcvAiMjPhNULxJCWS/9oADAMBAAIRAxEAPwDcapqKemZr1E8ULSctaR4aPvXR2WtXpOi59vSo3pVc5thjyJH5Vu8fWFWOu/y3fFc9attvkYyQ2sRbq58eRsSFmNmoSvV1L6F5dlrV6Toufb0p2WtXpOi59vSqN13+W74prv8ALd8Vmd6ovy03l7sFm2u4vLstavSdFz7elOy1q9J0XPt6VRuu/wAt3xTXf5bvineqL8tN47BZtruLy7LWr0nRc+3pTstavSdFz7elUbrv8t3xTXf5bvineqL8tN47BZtruLy7LWr0nRc+3pTstavSdFz7elUbrv8ALd8U13+W74p3qi/LTeOwWba7i8uy1q9J0XPt6U7LWr0nRc+3pVG67/Ld8U13+W74p3qi/LTeOwWba7i8uy1q9J0XPt6U7LWr0nRc+3pVG67/AC3fFNd/lu+Kd6ovy03jsFm2u4vLstavSdFz7elOy1q9J0XPt6VRuu/y3fFNd/lu+Kd6ovy03jsFm2u4vLstavSdFz7elOy1q9J0XPt6VRuu/wAt3xTXf5bvineqL8tN47BZtruLy7LWr0nRc+3pTstavSdFz7elUbrv8t3xTXf5bvineqL8tN47BZtruLy7LWr0nRc+3pTstavSdFz7elUbrv8ALd8U13+W74p3qi/LTeOwWba7i8uy1q9J0XPt6U7LWr0nRc+3pVG67/Ld8U13+W74p3qi/LTeOwWba7i8uy1q9J0XPt6U7LWr0nRc+3pVG67/AC3fFNd/lu+Kd6ovy03jsFm2u4vLstavSdFz7elOy1q9J0XPt6VRuu/y3fFNd/lu+Kd6ovy03jsFm2u4vLstavSdFz7elOy1q9J0XPt6VRuu/wAt3xTXf5bvineqL8tN47BZtruLy7LWr0nRc+3pTstavSdFz7elUbrv8t3xTXf5bvineqL8tN47BZtruLy7LWr0nRc+3pTstavSdFz7elUbrv8ALd8U13+W74p3qi/LTeOwWba7i8uy1q9J0XPt6U7LWr0nRc+3pVG67/Ld8U13+W74p3qi/LTeOwWba7i8uy1q9J0XPt6U7LWr0nRc+3pVG67/AC3fFNd/lu+Kd6ovy03jsFm2u4vLstavSdFz7elOy1q9J0XPt6VRuu/y3fFNd/lu+Kd6ovy03jsFm2u4vLstavSdFz7elOy1q9J0XPt6VRuu/wAt3xTXf5bvineqL8tN47BZtruLy7LWr0nRc+3pTstavSdFz7elUbrv8t3xTXf5bvineqL8tN47BZtruLy7LWr0nRc+3pTstavSdFz7elUbrv8ALd8U13+W74p3qi/LTeOwWba7i8uy1q9J0XPt6U7LWr0nRc+3pVG67/Ld8U13+W74p3qi/LTeOwWba7i8uy1q9J0XPt6V9w3G3zP1Ia6lkdlnqslaT9xVFa7/AC3fFSDAL39sHfu/Mu4fYrUj0hiTMwyErESq0zkE1YzIMF0RHVoS3Sv4Bj5VvzCrBWfpX8Ax8q35hVgs3pPpjftTipdsPRlxXggREXOmyFwXAEAnIu3vWuUQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBSDAPjAORd9FH1IMA+MA5F30WlY2nQsSlaOivwJfpX8Ax8q35hVgrP0r+AY+Vb8wqwWh0n0xv2pxUp2Hoy4rwQIiLnTZCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAInu3t9EAREQBERAEREARca3d6uq7ez1stns9q5QBERAFIMA+MA5F30UfUgwD4wDkXfRaVjadCxKVo6K/Al+lfwDHyrfmFWCs/Sv4Bj5VvzCrBaHSfTG/anFSnYejLivBAiIudNkIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIDtp6iane50L9UvYWO2AgtO+CCupESq0oeUTOEREPQiIgCIiAIiIAiIgCkGAfGAci76KPqQYB8YByLvotKxtOhYlK0dFfgS/Sv4Bj5VvzCrBWfpX8Ax8q35hVgtDpPpjftTipTsPRlxXggREXOmyEREAREQBERAEREAREQBERAEREAREQBERAckZHJcIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAKQYB8YByLvoo+pBgHxgHIu+i0rG06FiUrR0V+BL9K/gGPlW/MKsFZ+lfwDHyrfmFWC0Ok+mN+1OKlOw9GXFeCBERc6bIREQBERAEREAREQBERAEREAREQBEXEhbG3Wkc2NvG45D70Byi6evKPzym55vSnXlH55Tc83pXuSuo8qh3Iunryj88pueb0p15R+eU3PN6UyV1CqHci6evKPzym55vSnXlH55Tc83pTJXUKodyLp68o/PKbnm9KdeUfnlNzzelMldQqh3Iunryj88pueb0p15R+eU3PN6UyV1CqHci6RV0hOQq6YniEreld+R1Q7LYd48C8VKZxWpwiIh6EREAREQBERAEREAREQBERAEREAUgwD4wDkXfRR9SDAPjAORd9FpWNp0LEpWjor8CX6V/AMfKt+YVYKz9K/gGPlW/MKsFodJ9Mb9qcVKdh6MuK8ECIi502QiIgCIiAIiIAiIgCIiAIiIAvDeLrS2tkQmEs1ROS2npYG6007hvhreIcLjkBwkLm93GO1291U+J88hc2OCBnfTSuOTGD1k8PAMzwLosVrkpHSV9wkZU3apaBUTgdyxu+Io/Jjb952naVKxqImW7Nx/Pz6RucqrktPO2ivtz7u53A2uA71Hb3jdMv25yM8/UwNHrK+4sK4cY7XfaKapkO/JVZzvPtMhJWZROvf/qtE+l355jqm+KVxMZ2vYe9A2r+Dj6E7XsP+gbV/Bx9CyaL562JtLvPerZqQxna9h/0Dav4OPoTtew/6BtX8HH0LJonWxNpd46tmpDGdr2H/AEDav4OPoTtew/6BtX8HH0LJonWxNpd46tmpDGdr2H/QNq/g4+hO17D/AKBtX8HH0LJonWxNpd46tmpDGdr2H/QNq/g4+hO17D/oG1fwcfQsmidbE2l3jq2akMYcO4eIyNgtJH2OPoXnOFrPGS+3x1Fql4JKCd0P/aDqH3tKzaL1I8RP9l3niwmL4IYF9Te7MNavb2Zt7e+qaeLVqYRxviGyQcZZkf2SszR1NPWUsVXSTxz08rdaOSN2bXDjBXaNhzCj1yj7XaqS9UjSLZK/WudM0bI8/wD1LBwEfrgb47rfG36SkW6lHcf7w/s8WsO/w4EhRAQQC0ggjMEHMEcaKElCIiAIiIAiIgCIiAIiIAiIgCkGAfGAci76KPqQYB8YByLvotKxtOhYlK0dFfgS/Sv4Bj5VvzCrBWfpX8Ax8q35hVgtDpPpjftTipTsPRlxXggREXOmyEREAREQBERAEREAREQBEXIGZA40Bgox2SxhLI7bT2eMMjHAaiVubne1seqB/nKziwuDvylvrKs99VXKqkJ9khYPuYFmlLGudk6rufrUjhXtytd/55BERREgREQBERAEREAREQBEWHxrf4sMYYrL7NSvqmUoaTEx4aXZuDd8+1fTGOiORjc63Hy96MarnZkMwiph3VAWwNJ7V67YM/8AFM6FcNDOKqhp6prSwTxMlDScyNZoOX3qzMyExKoixm0rh7EECbgzFUhurQ7kcGuaWvaHNcMnNIzBB3wURVCyYTCWtSRVlie4uNrmEcJcdpp3jWi+AJZ/yLNrC/msdnLYKq1Zu9Zim2H4SFZpSxr3ZWu/n6kcK5KavzgERFESBERAEREAREQBERAEREAUgwD4wDkXfRR9SDAPjAORd9FpWNp0LEpWjor8CX6V/AMfKt+YVYKz9K/gGPlW/MKsFodJ9Mb9qcVKdh6MuK8ECIi502QiIgCIiAIiIAiIgCIiAL6Z37favlfTO/b7V4DBYH8XW/aqr/USLOAEnIDMqPYUqYKLCMtZUv3OCnmrJZHcTWzyEn4Ba+Y30n4oxXcHUttqKi3W+V4jp6SlcWySZnJuu4bS48W8teWsyLPR35FyIq1VcTOjT0OVhNyr1VLkNnKmtoaU5VVdSQHilnaw/eV5+zVl9M2z+Lj6VV2E9BdnFJHPi2qqq6vkAMkMMupHGT+rrd84jjzAWv8AVQxR1c8bY26rJXtbs4A4gK7J2NLTbnNhxVXJzrk3X6r/AKFaZtOPLo1z4aJX638DdHs1ZfTNs/i4+lfTLxZ3u1WXi2uJ4BVxk/Na/wCinRTZ8Y4UN4rLlWUsvXMkOpDGwtyblkdozz2r14r0DV1HSPqsO3JlzcwZmlniEcrh+yQdUn1HJROs2QZFWC6OqKl17bt59tnZt0NIjYVUX6mwTSHND2kOad5wOYPvRae4VxZiTCNfr2yung3N+rNSTZmJxB2tcw7x9mRC2g0e4socZYdjutI3cZWnc6qnJzMMmW96wd8HhCgtKx4siiPrlN18yWStKHNLk0o7USJF8yyRxRPllkbHHG0ue9xyDWgZkk8S170laZLlcamW3YTnfQW9hLTWNGU0/raf1G8WW0+reVaRs+NOvyYaZs6+CE83OQ5VuU/cbA1VVS0gzq6qnp+Wlaz5lfFNX2+pdq01wo53cUU7HH7iqB0b6JanFdEzEGK6+ripaju4Ig7Wnnb5bnOz1Wng4Tv7FktI+hi22uwT3jCktW2ejYZZaaV+vujBtcWOABDgNuXDkri2fJti9Qsf9Wb9t1calZJyZdD61IV2N9NxepBByIIKhGnX9FN7/wAsX4rVTeizSjdsP3KnobzWzV9klcGPEzi99OD+uxx25DhbvZbyuTToQdFF6LSHAsiII3iN0ZtRbOiyM9Ca+9FclF80CTsOblYjm3KiLVPI1Sk/Nu9hW61g8AW37HD/AENWlMn5t3sK3WsHgC2/Y4f6GrX6U/shYr7GdYH7n+Xue1ERccdKYao8eqH911H4sSzKw1R49UP7rqPxYlmVLFzNw91I2Z3Y+yBERREgREQBERAEREAREQBERAFIMA+MA5F30UfUgwD4wDkXfRaVjadCxKVo6K/Al+lfwDHyrfmFWCs/Sv4Bj5VvzCrBaHSfTG/anFSnYejLivBAiIudNkIiIAiIgCIiAIiIAiIgC+md+32r5X0zv2+1eAjeGaOC4YMnoKppdBUy1kMgByJa6eUHL4qHYK0MWvD+JIbxU3aa4ilfulLC6EMDXDvXPOZ1iPVkM1OMD+LrftVV/qJFm1fWcjwHRGQ3URyrUqJLQorWPelVREoct74e1aRV3+PqeXk/qK3db3wWkVd/j6nl5P6it/orni+XuZFv5ofn7GyHU1fo1P7wm+TVZirPqav0an94TfJqsxYNq6bFxU1rP0aHghrn1SlgituLaa9U0YZHdYiZgBs3ZmQJ9pBafbmvD1O99ktekCO3OeRTXWMwPbwboAXMPt2Ee9WB1UVO1+DrXU5d1DcNUH1Ojd0BUZg6pdR4us1Ww5GKvhdn/wA4XWyH/ssrIffcqbs26456b/8ANaGU3Wi78/uXr1SuIpbdhmlsNLIWS3R5M5B27izLMf8AM4gewFUno+sjcRY1tVmeCYaicbtl/wC23un/AHAj3qcdVBK52kCkgJ7iK3t1R7XvJXi6m+Jsmk2N7htjoZ3N9uQH1XkinwtkrEZnVFXz8PY9m1+ItBGOzVRPI2Ya1jGNZGwMY0BrWgZBoGwAL4qTGKWYzZbkI3F+e9q5HP7l2Dacgqp076QKO02apwza6hs11q2GKoMbsxTRnvsz5ZGzLgBJPAuNlJWJNRkhsS9fT6nSzEdkCGr3Gucupk/V7zbl7OBbLaQt2PU8k1Ge7djaTXz38841TWinBFZjK/xsMT2WmmeHVtRl3OqNu5tPC473qG1X1pza1uie8sY0Na1kQa0bwAkZkF1tsTDHTkvBat6ORV+l6HO2dBcktGiLmVFpuU1Tk/Nu9hW61g8AW37HD/Q1aUyfm3ewrdaweALb9jh/oaoulP7IWK+xJYH7n+Xue1ERccdKYao8eqH911H4sSzKw1R49UP7rqPxYlmVLFzNw91I2Z3Y+yBERREgREQBERAEREAREQBERAFIMA+MA5F30UfUgwD4wDkXfRaVjadCxKVo6K/Al+lfwDHyrfmFWCs/Sv4Bj5VvzCrBaHSfTG/anFSnYejLivBAiIudNkIiIAiIgCIiAIiIAiIgC+md+32r5X0zv2+1eAwWB9uHmAedVX+okWRttxoLlHNJb6yCqZDM6CR0TtYNkb3zT6xmo9bLi20aO6+6vOQpOvpfeJpcvvyVJ6AcZjD+Jn2y5zBlBdnAPe47Ip/1Xn1HPVPu4lsQ7NfMsjxW52rm13rX0M1062A6FDd/sm7UbMN74LSKu/x9Ty8n9RW7wBDwDv5rSGu/x9Ty8n9RWt0VzxfL3M+380Pz9jZDqav0an94TfJqsxVn1NX6NT+8Jvk1WYsG1dNi4qa1n6NDwQqrqnpGtwHQxnvpLizL3MeSqBw5E6fEVrhYM3PrYWjnGq2+qkuzJK+zWKN4LoGPqpgOAu7lv3Bx96h+gqyvvOkm3v1CYLeTWTHgGr3o97iF1tlL8NZfWO1KvI56fTr5/Ib9EJV1VFA+PEtpugb+TnpnwF37TH55fBygmi29XSx40paqzW5lyrpmPpoqZ8moJC8cfuWx+lTCYxjhGe2xlra6J270b3bwkA70nicMx7xxLVJpr7PdwSySkuFDODqvGTo5GHPaPaF82LGZNSKy63qiKiourw8vA9tOE6Xm0ipmW/mXtc6bThiZjqd4t+HaV+xwinax+XEXAuf8Ml84Y0E22nlbUYku0txfnrOgpgY43H9p57o+7JWFo/xZb8Y4fiuVG9jahoDaunz7qCThBHknfB4QpCuci2nNQKwWNSHrRqUXfevmbUORgRaRXKr9VVr6Zjz2ygorZQxUFupIaSliGUcUTdVrf/vGodp6lii0VXcSSNYZTFGwE987dGnIevIH4KY3Kuo7ZQS19xqoqWlhGtJLK7Va0dPq31rLpcxtVY6ujmW2CcWS2AvYNQ5nM6pmk8nPMAA72fGSvbHk4kzMtieDVRVX2xUWlMsgQFZ4qlET81FfSfm3ewrdaweALb9jh/oatKZPzbvYVutYPAFt+xw/htWz0p/ZCxX2MywP3P8AL3PaiIuOOlMNUePVD+66j8WJZlYao8eqH911H4sSzKli5m4e6kbM7sfZAiIoiQIiIAiIgCIiAIiIAiIgCkGAfGAci76KPqQYB8YByLvotKxtOhYlK0dFfgS/Sv4Bj5VvzCrBWfpX8Ax8q35hVgtDpPpjftTipTsPRlxXggREXOmyEREAREQBERAEREARRzGmN8OYRiabxW5VD260dLC3XmeOPV4B6zkFAINNFzvFY6lwtgWsuL27+tKSQOMhjSB7yrsCzZmOzLY39OtaIm9aFWLOwITslzr9WdfQuJfTO/b7VQ9x05Yht1dNQ12EaGnqoH6ksT6h+sx3Edi+IdPF+mzMGEaSXV39zlldl8ArfYM8qVyUpinMr9ryqLTK9F5FqYet9Hd8ET2yviE1JVTVcUrM8swaiTePAeH3LWzSTgi54Lu5pqprp7fM49aVgb3MjfJPE8cI942KdjTxdqY7icJW+DIk6m7SMO05k5ZcakmHNK+FMZMOH8UWplD11kwNqHCWmkPANbIFh4ifitSUh2hZz3RVh1Yq1VEVF80oUJh8nONbDR9HJci0VPIx+hfStBJBT4dxXVCKaMCOkr5T3Mjd4MkPA4bwcdh4du/AavRVj99XPIzD73MfK5zSKiLaC4kHvlOcY6CGvkknwrcmxg7es60kgepsg2/9Q96wdog004JaKWjoK+po2d7Dqtq4QP2ciS33ZKzAjQEc6LIPaiupVrrt1/1+qEEWFFVGw5trlRuZW37/AMQtDQdYbthzA5t16pDSVXXksm5l7XdyQ3I5tJHAVJMW4iteF7JLdrtMI4mDKOMHu5n8DGDhJ+7fKqF2P9MVUzcKbB5ilOzXFslJH/Uclif9m2kvGlzbX4oqRScG6Vsoc5jeJkTN72bFmPs5IkdY05Ea1FWqoi1XyLzZxWQkhSzHKqXJVOJX1+udzxbiqe4SRPnr7hPlHBEC48TY2j1DILZbQ/gkYMw4WVQY661hElY9u0My72MHibmfaSV26PdHVgwa3d6Vjqy5ObqvrZwNcDhDBvMHs28ZUwXxa1rtmGJLwEoxPWmbyPuz7OWC5Y0VavX0/sKG6QtHNgxkOuKlr6K5NbqtrYANYjgD27zx9/rUyRYsGPEgPR8NaKacWEyK3JelUNeRol0h4augr8MXSmlkZsbNT1G4PI4nNdsI9WZCk9JPp9dGIHUtoad7dphDn7dh+it9FpRLZixv5YbHLrVt/EossyHD/je5qakUqB+i3EmI6htdpDxi+eKLuutqU5MYOHaQGt9ob71IsQYaw/Foov1mwpBRiI0jnE08gkdI9mTxruBJJ7nhXo03Xxlj0c3E64FRXN6zgHCS/vj7m6xUV6lhrW4SvLQxur1+3MZbD+TCsdZMRZT4tzqNY5KNRKJnTURZEGHMfDtSquRaqq1U17d3UZy4QtysDVTa3BVjq2nMSW+E5+sMAP3ha2aX8F1GEMSymKJxtFY8yUcuWxue0xE8Dm/eMirY6m/EkFxwkcPSytFbbHOLGE7XwOOYI48iSD7lq29SbkmTEK9EX0X+zPsmsvNOgxLlX2LUG05BQmp0q4Gp76bPJd3bq2Tc3TthcYGuzyyL/bw73rWS0nXqKwYEutfJOIZXU74abbk50rxqtDfXtz9y1It1BV3KsgttBA+oqqhwjiiYMy4n/wC7Ssqx7JhzkN8SMqoiXJ7r5F+0rRfLPayGlVU3CqCDjmhIIINqqCCOH8rEsyo1a6OWgv1iopXmV9NYnwvk3wXNfCDt9ykqxoyImSiavdTThKq1r+XIERFCShERAEREAREQBERAEREAUgwD4wDkXfRR9SDAPjAORd9FpWNp0LEpWjor8CX6V/AMfKt+YVYKz9K/gGPlW/MKsFodJ9Mb9qcVKdh6MuK8ECIi502QiIgCIiAIiIAuW5awz41wi8Bp9faTEV+x9XUdRS1M96qaxzHROYdYHWyHsaBlt3sgtq8HWChwvh6ls9BExjYmDdXgbZpMu6e48JJ+5ZXVbrl+q3XIyLstuXFmuVr2jazpxjIaNyWt8PzV4GdJWe2Wc56rVVNRdLP6TcR/bn/IKzupUcRTYiyJH5SDe9j1WOln9JuI/tz/AJBWb1Kv+GxFykHyeumtP/EeTfYw5H/I+bvctTGGGLRiu0y26600by9pEU+qN0hdwOa7f2cW8VqBd6Ce2XSstlWBu1LM+GQcBLSQt2BvrUPStLFPpKxFJCQWGueARxjIH7wVn9F478t8Kv6aVwUuW9CZktieOYvnQDiSfEGBxT1srpau2SdbPe45l7Ms4yfXlmP+VSnFOK8PYXgEt7ukNK5wzZFtdK//ACsG0+3eVW9SxBM6gxHK0lrXvhjY7ifqvOfuzCrzA+FrnjzHs9Hcayofub3SXKre7WkDWuyyBP6xOwcA9yhi2ZAiTkdXuyWMoq0+qVuJIc9FZLQka2rnXJ5FmXXT/Z4pXMtthrqpo/XnmbED7hrFcWnT5apZ2sumH6yljJ2ywTNl1fXqkAn3Kz7Jhyw2W3Nt9stFHBTgZFpiDi/1uJGbj7VrDpjtFFY9I10oLdC2GlOpMyJves12hxA9WZK+7Og2bPRHQWwlSiVrVf8Aiep8zsWdlWJEV6L9KG01ju1uvdrhudpq46ukmHcSMPDwgjfBHCCu+uqqWho5aytqIqamhbryyyuDWsHGSqL6livnF1vlr1yaZ1OypDM9geHapI9oP3BenqpbrVNdZrGx7m0srH1UrQdkjg7Vbnx5bT71QdZH/wBD4RHXa/pSu8tpaP8A4/iFS/V9a0Mxf9OuHaSZ0NotlbdMjkJSRDG4+rMFx+AXTLpivlJTituOjq5U9Edu7a72jLjzdHkq96n2G2TaTaNtyEbnNhkdSNkGYMwA1d/hy1iPWFtE4lzXNf3QcMnB20EevjVm0YUlZ8VIPVZV1VVXKnAgkok1OMWJ1mTfmREIHg/SvhHEc8dIKmW21khyZDWANDzxNeDqk+rYs7jzFNFg6w9mLjT1E8O7Mh1IdXWzdnke6IGWxUj1QOBKTD9bDf7RA2G3V0hjngaO5hmyzBbxNcM9nAQeNWRoTlkxRoypWYkp4LlHDUvhi65YJNdjMtUu1t8jMjPiCimZGVZBZOQqrDVaK3x3/mskgTUw6I6WiUR6JcvgUnpVxzUY3vUU7YX0tupWltLTudm4Z9892WzWOz2ALO6HNJFowTZq+huVDXVL6mpEzHU+pkAGgZHWI2qDYziigxheoYY2RRR18zWMYMmtAeQABwBW91Nlls90w3d5blaaGtkZWtax1RA2QtG5g5AkbAujn2y0Cz0RzP0XXIvuYso6PFnKo79V95mW6W9HuJYHWi+0VVBSVHcuFbAHxeoktJLfbwca+KnQrahXRXTCuJLjaJO/hcwiUNB3i14IdkR6yq96oO14btGL6amsEENNO+n1qymgGTGPJ7jJvASOAerjU4vtLiCydTXTQvqamjroGRmYNcWvbC+Q/kyd8dy5ufwWSsFIMOE+UerEiLSi35/Gn5nQ0EirFfEZMNRysStUu8qkUx1a8PUteG4x0mXTEFXBsFLRQCRzOMaznFjD96+cK6S8IYSLhhzBEu6PGq+rqq4OneOLMNOQ9QyC9WgjRxR32F2JL/Bu1vZIWUtK7Y2dw757uNoOzLhOfErsxBhyyXXDtTaam2UgpnQuDAyFrdyIGxzchsIOW8vqcnZaC74aLV6JnouSieTaV8955LSseK3r4dGVzeK71qQjCumzDN2qmUlzpqizSyENbJK4SQ5+twyLfaRl61aAIIBBBBGYIOwrR3LZqnblsPrW1WgivqLhoutb6l7pHwGSnDnHMlrHEN+AyHuVe3LIgyjEjQbkrShNZVoxJhyw4melak4REXNG4EREAREQBERAEREAREQBSDAPjAORd9FH1IMA+MA5F30WlY2nQsSlaOivwJfpX8Ax8q35hVgrP0r+AY+Vb8wqwWh0n0xv2pxUp2Hoy4rwQIiLnTZCIiAIiIAiIgCIiAIiIDUXSz+k3Ef25/yCnfU33+x2SnvovF2o7eZnwmIVEoZr5B2eXszCgmln9JuI/tz/AJBSXQhgOyY0gu0l3fWtNI+JsXW8oZnrBxOeYOe8F+hTaQlsxEjKqNo3Nn8DjpdYiTyrDSq1XP5ln440u4Zs9qmFkuEN2ubmlsDIM3RsdwOe7eyG/kNpWt9vo7le7syjooJq64VchIY0Zue4nMk8Q4STsC2Fo9CuA5QJoqi6VMWsRsrBqkgkEZhvAQR7lOcMYXw/hmB0VjtcFHrjJ8gBdI//ADPOZPs3liS9pyVnQ3Nl2q5y+K3GnGkZqceixlRGpqPFoywszB+E6a0h7ZaouM1VI3efK7LPL1DIAexYa54k0b6P6yudE6lguNW/XqoKFplmkdmT3W3Ju0nfI31h+qDxvVWC309gtE7oK6vjL5pmHJ0UOeWTTwOccxnwAFUzowwwMW4zpLRI57KY609U9p7rc27XZHjJyGfrXknZyzEJ85NPVGrVVRPGn5ch7MzqQYjZaXaiuS5K+H54lrt0t4mxNVPoMCYQfNINhnqXa4j9bgMmt97lVGk6nv8ATYyqo8UVkVXdnRxvnkiy1Bm0FrRkANg2bAtsrTbqC02+O32yjho6SIZMiibkB6zxn1natZuqD/SrceQg/DCs2HMwXzSsgw0a2i/VVvTOvshDasCIyAjor1ctcE8fD3M/1LXjbef3e38QKcdUDg+pxFh2C6W2J01da9ZxiaM3Swna4DjIIBy4dqg/UteNt5/d7fxAthBsOYVO15l8tanWszpTgWbOgNjyPVuzLXiaPwySRSsmhkfHIxwcx7Dk5pG8QeAq99GGmWKdsVpxlI2KbY2O5ZZMfxbqB3p/aGzjy31ldKOiKivz5rvhwxUF0dm6WA9zDUHj/YcePePDxrXy8Wy4We4y2660c1HVxHJ8Urcj7Rxj1jYt1r5O2oNF/cm9P69DJVszZkSqZvRTbvG2HqPF+F5rNUVLooKgskZPEA8tLSHBzeA//wBXZgfD1PhXDlHYqWeSojpy47rI0Bzy5xcSQNnCtddFuk254QljoK0yV9kLu6gJzfB+1GT/AE7x9S2as9worrQU1xt1QyppKhofFKw7HD6HgI4FytoyczIt6ly1hqtU1V9lp4G/JTMCad1rUo+lFw5Gn2OfHa+/vGf8Qq6upZ8Vr19vZ+GFSuOfHa+/vGf8Qq6upZ8Vr19vZ+GF09tf4z/8+xh2Zp28tSe2Wye4RXCe3UctZENWOofC10jBxBxGYS9UluuFpqqS7xQy0EjP94bM7Jhbnn3RzGQ2L2AZnILWfTtjeqv+IqixUc7mWeglMRY05Colbsc93GAcwB6s+FcnZslFnoyMatKX11Yex0E7NQ5WGrnJWvhrLJuWlTAGEqCO02Nr66OmaWRQUDfyLBnnlujtm/nvZrEU+LtJ2OoHjDNkp7DbHtOtXz5uOrlt1XOG0/5Wn2rA9TxgigvUtViO8UzKmmpJRDSwSDNjpcsy9w4Q0EZDezPqWwE2ymkAAAEbgAN4DIq/OulJGKsOGzLemdzr78My+ZUlUmJqGj3uyW+CJd6mkJ2Ejf2rZ7qdv0WUf2qo/rWsLu+d7Stnup2/RZR/aqj+tbfSXQ0+5OCmVYekrgvsWGiIuEOtCIiAIiIAiIgCIiAIiIApBgHxgHIu+ij6kGAfGAci76LSsbToWJStHRX4Ev0r+AY+Vb8wqwVn6V/AMfKt+YVYLQ6T6Y37U4qU7D0ZcV4IERFzpshERAEREAREQBERAEREBqLpZ/SbiP7c/wCQVpdSkP8Acb+f/kQD/tcqt0s/pNxH9uf8grV6lMf8Jvx/+XCP+wru7U/xCYN9jk5D/I+bvcsrA/i637VVf6iRZtYTA/i637VVf6iRZtcTMfyuxXidRB/jbghrB1RMr5NKVWx5OUVLAxvs1M/mSsz1LjWHGN1cctcW7uecbmvZ1TWGallzpcWU8Tn0skTaarc0Z7k9pOo4+og5Z8Y9ar3Rnip+DsWwXfcXT05Y6GpiacnOjdv5esEAj2LuYTfi7IRkLPk0808DlYi/D2jlRM1a+Sm3i1c6oPL/AGq3HbvQwfhhWbiXThhynthOHoau43CQZRMlgMcbHHe1s9p9g3+NUXjKlvVLiCc4iLzdKlrKqo1z3QMg1gDxHIjZwbyz+j8hGgRliRUyaoqIi51vSq01J7lu2JuHFhIyGtb71TN4ljdS1423j93t/ECl+lPS7Fhu4S2Sw00NbcYtlRNKSYoHeTkNrnDh2gD1qDdTlVOorriatYM309mfK32tdmPkoPgmx1eMcW0lqE5bLWSOkqJztLW7XPf6zv8AvIVuNIwY89FjR/2sROHtQrw5qLClIcOF+5yrxJRDppx3FVCWSuoJWZ7YX0bA0+rZkfvVsWWbDemPBZfdLcIKumfuUhY78pTSZZh0b+FpG3I7N8FSKyYDwhZ6BtHS2Chlbq5PkqYWyySetznA/dkF7MNYXsWG3VhslA2jFZIJJmtcS3MDIAAnuQMzsHGsOctCTelZaGrHotypRN9P7NWWk5lq0jPymrnRbzVjSDhG5YMvzrbXESxPGvS1LRk2Zme/6iN4jgU56m7Fk1vxH2rVUpNFcCXU4J/NTgZ7PU4Aj2gKddUlQwVOjnryRo3ajrInRO4RrnVcPeMvgqCwNJJDjaxywkiRtwg1cv8AOAuggRe1LNd1qX3p5peimPFh/ATqdWt125fA5x2C3HF+BGRFxn/EKujqWSO1i9tz2ivYTzYUS6ofBtVasTVGJqSFz7ZcH60z2jMQTbxDuIOyzB48wuvqesX2/Dt7rbbd6llLR3FrSyeQ5MjlbnlrHgBBIz4wF8zi/G2VWDfcl2FKp5H1LJ8LaFIl16+uY2DxBcWWew3C7PyLaOmkmyJyBLWkge85BaWyyPmlfNJ38ji93tJzPzV46fdIdrqrIcMWGuirDUODq2eF2tGxgOYjDt4knLPLeA9api5Wu421tK64UNRSNq4hNTmVhbujD+sF89HZR0vBV8RKK9btdE/FPbZmEjREay9G8VNkepyawaLqctyzdWTl3t1h9MlYVQQKeUk5ARu+RWumhDSRQYTpaqzX0Tigml3eGeJmuYnkAOBaNuRyBzG8faprdcXVukmSbDGCY6mmtrm/8Uu00epqRZbY2N383b23afUMysW0LMjrOPe5KMVa5XhRff6ZzUk56Eks1qLV1KU8a/nia7nvj7Stnup2/RZR/aqj+tawuGq4tGwAkLZ7qdT/AOFlJ6qqo/rW50l0NPuTgpk2HpK4L7FhoiLhDrQiIgCIiAIiIAiIgCIiAKQYB8YByLvoo+pBgHxgHIu+i0rG06FiUrR0V+BL9K/gGPlW/MKsFZ+lfwDHyrfmFWC0Ok+mN+1OKlOw9GXFeCBERc6bIREQBERAEREAREQBERAVXpF0O0WIrjVXm03J9Dcql5kljn7uGR3Hs2s+8epevQFha94UpL1RXukEEklXE6JzXh7JWhhGs0jfGaslfTO/b7VoOtOYfLLLvWrbsUp+eJTbIwWxkjNSi8zBYH8XW/aqr/USLNrCYH8XW/aqr/USLNqpMfyuxXiWIP8AG3BD4niingkgniZLFI0tfG9oc1wO+CDvhV9dtDOBq+d00VLWW8uOZZS1BDPc1wOXuViIvqBNRpdawnKmB8xYEKMlIjUUh+EtGmEMM1TKyht7qisZtZUVcm6uYeNo3mn1gZruxFo8whiG7S3W72t1RWSta18gqJG5hoyGwHLeUqRfSzswr+sy1ytdVqeJKwUZkZCU1UIzh7AWFbAaw2i3upXVtO6mncZnvzYeDJxKoTRm84H0xQ0N6ypxFLJQyvfsDdcZMfn5J7k58RW0KhGlDRxa8bQtqN0FDdomakdUGawe3gZIOEcR3x9y0bPtJEdEhzLlVsRKKudU1KUpySqjHwERFYtUTNUnBBByO+uFStvqdM+C6dtvfZ4sSUEI1YntO6ua0bwDmkPy9TgV0XPG2mG7RmlteDqi1ueMjJHSPLx7HSbB7clGlkRHL+iI1W68pP8Ap9raLET9THIuqi/8PR1TWJqYW+lwnTStfUulbU1YB/NtAOo0+sk55cQHGoXoAwzPe8cQXR8R6wtLhPK8jY6X9Rg9ee32BZjDOhXEl2rTXYrrhQRyP15gJBNUyk7+Z2gH1kn2K9cO2W2YftENqtFK2mpYt5o2lx4XOPC48JWpHn5eRk/hJd2U5c6pmvz8kKMKUjTcz8RGTJRMyeN2Y908UU8L4Z4mSxSNLXse0Oa4HgIOwhQC76HMC3Cd00dDVUDnHMtpKgtZ7mkED3KwUXOQJmNLrWE5UwU2osCHFSkRqKQrDWizBVhqWVVPa3VdQw5skrJN11Txhve5+5SXENjtGIaA0N6t8NbT55hsg2sPG0ja0+sLIIkSajRHo971VU8anjIEJjchrURMCtH6EMDuqRKOyrY88zEKvuT6s9XP71P7DabZY7fFbbVRRUlHHvRxjf4yTvknjO1exF9R5yYjojYr1VE1qeQpaDCWrGoimmWLrbJZ8VXW1ytLXU1XIwf5dYlp+BCvzqZqts2j6opc+6pbhICOIPa1w+qxPVC4DqbgRi2zU7pp44wyvhjGbnMb3sgHCQNhHFkeBRDqe8W0uH8TT2641DYaC6NawSvOTY5mnuCTwA5lufsXXTUTtKy8qHe5KKqfVM/pVUOdgM+Bn8l9yLWi/RcxssoDjrSth3Cd4Nplp6u4VkYBnbTaoEOe0Alx2uy25BTa6V9FabdLc7lUR01HAzXklechl6uMngA31ptfa2W+Ylrq+OKV8tfVvkjjALnnWcS1oA3zlkFiWHZrJx7nRf2pxNS1J58s1qQ/3LwNv8M3u3YjslPeLVKZKWcHLWGTmkHItcOAgrJKHaGsOVuGMBUtvuI1KyWR9TNHnnuRflkz2gAZ+vNTFZMyyGyM5sNatRVov0NCA57obXPSiql4REUJKEREAREQBERAFIMA+MA5F30UfUgwD4wDkXfRaVjadCxKVo6K/Al+lfwDHyrfmFWCs/Sv4Bj5VvzCrBaHSfTG/anFSnYejLivBAiIudNkIiIAiIgCIiAIiIAiIgC+md+32r5XLO/HtXgMHgfxdb9qqv8AUSLNjaclhMEbLBqHfZWVbT6j1xIsxUbr1vL1uWibc3blrb2tkdXP1Z5KaP8AyuxXiRQf424IYuzX6G6XKehjtt2pnQhxMtVRuiidqvLO5cdh2jMepey0VxuNI6p6yraMCZ8W51UW5vOq7LWA8k74KqPA1RerVeaa4y0OLn1FNSTvxM2qa6SOaX9TcGk5Odrb2r+qu/Dt6bYcX191tuGcZtw7WU4EsUtJJIRVl5drtY45hurmNmxaUWzUq5GeCXe6Z/HOmtNRShzq0ar/AM+vsv1LgWPu14orZWWykqjIJbnU9bUwYzMF+qXbTwDIHaox/tJt/wD+MYv/AJQ/pWNrb1Li7F2FWW3D9+pordcHVdVPXURgjYzc3NGRJ2kk7yrQ5GIi1itolF4LT1J3zbKUYtVu4lkrkgjfGSwkd9LseyYaMcLWstra0SOfk97jIW6oG8QAMyqxo8U3yGkvVFh+33yuqZMSyzNrKan3aE0zXjdGNecxnkCMvXsXkCQiRa0uzL5KexZtkP65/QukNdsyB272zfXJDs8sjmOBU5Xdn7tBe7y21Ykhslfe4Hz0kbXR1r6NkJa7UZnrNGvq5gb4zWPF2qWaMqw08l2lp6HFkEFFFUOd11uIe124nM5l20jIn1Kw2y1dSjr6omFfPOikKz6JWrfBV3F4rH3a+WW0SRR3W60dC+UF0bZ5QwvAIBIz39pA96jT9JNv13Z4XxgNu92Ifs+9YXEeL6i8VVrNowdiKZlLVCa4GotDQTSja9jdfPMkhpyGR2KGDZ8VXJltonkhJEnIaN/StVLQ1XZZ5HLjXCpGzPvV4xTBcaS24qivcl7MslZVNkhpI7dn+bLHHV73Zq5Z58KtR99Ix6zDQjiax1tNaJHPye526aga0bxGWZK+ZiRdBWiLVaVX6U/LuB7BmkiJVUpfQ9NlvNFd5bjHR7rnb6t1HPrs1fyjQCcuMbRtXbe7nQ2W01N1uU7YKSmZryPP3ADhJOwDhJVaYSxfTWW7YrjfZr5Xwz32eSKpt9GZ4nbGgtzB2EEfeu/F2JbDiehp6Wuw/juDraobUwyU1sex7XtzyO3MHf4Qp1s5yRkRWrkXcCNJ1qw1WqZV5KLtievp8PWi609knidcJ42SQVZa18DHZ5ZjWGbjsAGfDtGzJSk76pstxHcrE0TwX6qt0eJaCS3OukP++bkDnI54Az1Ad4lXI/vz7VDOQGwUREpWq5vKm6tCSWiuiKqr9PcA5HMKE4q0XYMxFO+pqLc6jqpDm+aifuRceMtyLSfcpO+uc3EMVrEbS19G+pc/PaCHtaBlxHWPwXuVeFGiy7kdDcqKuomfDhxkyXpVCrP9iFgkayKqxBiCppoz3ED526rfZs2e4KYYTwNhbCzhLZ7VGypyy65lJkm9zjve7JSNFNGtCajNyXvVU1EcOTgQ1ymtSoREVMshERAEREAREQBERAFIMA+MA5F30UfUgwD4wDkXfRaVjadCxKVo6K/Al+lfwDHyrfmFWCs/Sv4Bj5VvzCrBaHSfTG/anFSnYejLivBAiIudNkIiIAiIgCIiAIiIAiIgCIiAwuHj1td73a3bC2qFZEOOOYZnL2PbIFmlhMSRy0dRTYhpYnyvomuZVRMGbpaZ2ReAOFzCA8DhycOFZinmhqKeOop5WTQysD45GHNr2kZgg8Sli/qo9PHj+XkUO6rdXD8uOzM7Np2byazs88zn7VwihJT61neUfisNPiiyxXEUE1a9ku7CDXfBIIhKdgZumrqa2ezLPf2LLjfUCrr3T328y2+8S1VFaqSuayOjbQzOfWPjeC175A0tbHrgENbv5ZkgbFZloKRFWqLRNX/Fr+XoQR4qsRKLeus9OOYsAXavbTYmjZNUUOTXztZKOtQ/aGySxjJgOw5OPDms1a6rDdkq6TCFsfT0swiL4KKFpOTQNYkneBI27Tmd9R6KuZZbbiOyXGhrJ6+rrKuWCKOlfIK5s+epquALeENOZGrq7di6nVEVnvOCrdXvqHz22lfFWyx0ssjWudTtY0lzWkHMjLf9uSuLBVzOrq5UStErct1aolM1bvPPUrJERrsuiIq0rdfnpRVw4GcxFcsL3QyWK61UzmdcMikdHu0cbZsxqxumZkA45gautwgFd0GDMMQTW6SGzQRm2kupGAu1I3k5l+rnk5+f6xzKg9x693O5xMluEdwlvBqBh7rNz6eo1ZQWkSZZhr9USOcHaufBsyNiXetDbrbrQ+BkrLnu7JdZ281kesQMt8nPL2Zr4isfBa1sNy0WvjqS9fDwrrRdan1De2Iqq9qeHh9btf01YGU1n7+s74rgucd8k+9Qnszb8PY1uVvqBWx0UVvo2QMgppZ44iN07nJgdqkjI7d8BZHt4w7/AO5cv5VU/wBtVnSkW5WtVUWi5taVJ0mIf+yoi4klJJ3ySsJijCdgxM2A3u2MqnQZ7jJrOY9gO+A5pByPEvM3HGHNYZyXLLPb/wAKqf7ai+EKuqr7laaumlv8l1kqpHXh1SyZlKKfu8mhrwGD/wAvUDRrcfCpYMtHh1iXtVPG9PBfH8zprI4keE+jLnV89RYFktlvsltittppI6OkiB1IohkBnvnjJPGV7dZ3lH4r5RU3KrlVVvUtIiNSiHOZzzzK4RY7EFydbaJpp4xPX1D9xooM/wA7Kd7P9kd848ABRrVctEDnI1Kqea1HrvFd3rhtjpmRW+M8bm5ySfAvaP8AlWaXisdvbarVDRCUzPYC6WU78sjiXPefa4kr2r7iuRzrs2bcfMNFRt+cIiKM+wiIgCIiAIiIAiIgCIiAKQYB8YByLvoo+pBgHxgHIu+i0rG06FiUrR0V+BL9K/gGPlW/MKsFZ+lfwDHyrfmFWC0Ok+mN+1OKlOw9GXFeCBERc6bIREQBERAEREAREQBERAEREByCQcxvqPvpazD80k9rpn1lqkcZJqCP85TuJzc+AcLSdpj48y3iWfRfbHq36op8OZlYnltdxobpS9c2+qjqIgcnFu+w+S5p2tPqIBXqWNuVittfU9eSRSQVoGQq6WQwzZcRc3vh6nZhefsbf4dlLiYys4BW0LJT/wBTCwlfWTDdmdTH+v6PMp6Z0rh/f9maX1rvyy1nZe1YPrXFPpq0/wAtf/dTrXFPpq0/y1/91OqbtJ68hlrsr6czNhxAyBIHFmgc4DIOIHtWE61xT6atP8tf/dTrXFPpq0/y1/8AdTqm7SevIZa7K+nMzes7LLM5cWax97s9vvVMynuELniKQSRPjkdHJE8bNZj2kFpyJGw8K8nWuKfTVp/lr/7qda4p9NWn+Wv/ALq9a3JWrXoi+fI8c7KSitX05nssVooLJBLFbo5Gbs/dJpJJXSSSuyyze9xJccgBtOxZDXf5bvisH1rin01af5a/+6nWuKfTVp/lr/7qOYj1q56KvnyDXZKURq+nMzmu/wAt3xXBc475J9pWE61xT6atP8tf/dTrXFPpq0/y1/8AdXz1TdpPXke9Y7ZX05maRYbrXFPpu1D1i2Pz/FXBstwqdlyxJcJmHfipGMpWn1Etzf8A9wXvVt8Xp68hlu2V9OZ33a90tDUCiiZJXXJ4zjoafIyH1uO9G39p2Q9u8viz2yoZVuu13ljnucjNzaI89ypYyc9zjz27dms47XEcAAC9lrttBa6cwW6kipo3HWcGDa88bjvuPrJJXqRXo1Mlm/x/r8vCMVVq4IiKIkCIiAIiIAiIgCIiAIiIAiIgCkGAfGAci76KPqQYB8YByLvotKxtOhYlK0dFfgS/Sv4Bj5VvzCrBWfpX8Ax8q35hVgtDpPpjftTipTsPRlxXggREXOmyEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAUgwD4wDkXfRR9SDAPjAORd9FpWNp0LEpWjor8CX6V/AMfKt+YVYKz9K/gGPlW/MKsFodJ9Mb9qcVKdh6MuK8ECIi502QiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCkGAfGAci76KPqQYB8YByLvotKxtOhYlK0dFfgS/Sv4Bj5VvzCrBWfpX8Ax8q35hVgtDpPpjftTipTsPRlxXggREXOmyEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAUgwD4wDkXfRR9SDAPjAORd9FpWNp0LEpWjor8CX6V/AMfKt+YVYKz9K/gGPlW/MKsFodJ9Mb9qcVKdh6MuK8ECIi502QiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCkGAfGAci76KPqQYB8YByLvotKxtOhYlK0dFfgS/Sv4Bj5VvzCrBWfpX8Ax8q35hVgtDpPpjftTipTsPRlxXggREXOmyEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAUgwD4wDkXfRR9SDAPjAORd9FpWNp0LEpWjor8CYaVvAMfKt+YVXq7MRUFLcaZtPWR7pHnrZZkbQRxKP8AanYvNHc67pXUWvYkeejpFhuREpS+utfoYVnWnClYSsei1rW7y+pWaKzO1Ox+aO513SnanY/NHc67pWV3Wm9pu9eRoduy+yvpzKzRWZ2p2PzR3Ou6U7U7H5o7nXdKd1pvabvXkO3ZfZX05lZorM7U7H5o7nXdKdqdj80dzrulO603tN3ryHbsvsr6cys0Vmdqdj80dzrulO1Ox+aO513Sndab2m715Dt2X2V9OZWaKzO1Ox+aO513SnanY/NHc67pTutN7Td68h27L7K+nMrNFZnanY/NHc67pTtTsfmjudd0p3Wm9pu9eQ7dl9lfTmVmisztTsfmjudd0p2p2PzR3Ou6U7rTe03evIduy+yvpzKzRWZ2p2PzR3Ou6U7U7H5o7nXdKd1pvabvXkO3ZfZX05lZorM7U7H5o7nXdKdqdj80dzrulO603tN3ryHbsvsr6cys0Vmdqdj80dzrulO1Ox+aO513Sndab2m715Dt2X2V9OZWaKzO1Ox+aO513SnanY/NHc67pTutN7Td68h27L7K+nMrNFZnanY/NHc67pTtTsfmjudd0p3Wm9pu9eQ7dl9lfTmVmisztTsfmjudd0p2p2PzR3Ou6U7rTe03evIduy+yvpzKzRWZ2p2PzR3Ou6U7U7H5o7nXdKd1pvabvXkO3ZfZX05lZorM7U7H5o7nXdKdqdj80dzrulO603tN3ryHbsvsr6cys0Vmdqdj80dzrulO1Ox+aO513Sndab2m715Dt2X2V9OZWaKzO1Ox+aO513SnanY/NHc67pTutN7Td68h27L7K+nMrNFZnanY/NHc67pTtTsfmjudd0p3Wm9pu9eQ7dl9lfTmVmisztTsfmjudd0p2p2PzR3Ou6U7rTe03evIduy+yvpzKzRWZ2p2PzR3Ou6U7U7H5o7nXdKd1pvabvXkO3ZfZX05lZorM7U7H5o7nXdKdqdj80dzrulO603tN3ryHbsvsr6cys0Vmdqdj80dzrulO1Ox+aO513Sndab2m715Dt2X2V9OZWaKzO1Ox+aO513SnanY/NHc67pTutN7Td68h27L7K+nMrNSDAPjB/8Apd8wpZ2p2PzR3Ou6V67ZYbXbqjrikpyyXV1cy8nYfaVckOjszLTLIrnNoi/XkV5q14MaC6G1FquHM//Z" alt="Del Pasta"></div>
-    <h2>تم إرسال طلبك! 🎉</h2>
-    <div class="order-confirm-badge" id="success-order-num">رقم طلبك: ----</div>
-    <p>شكراً لثقتك بدل باستا<br>سيتم التواصل معك لتأكيد طلبك في أقرب وقت 🌟</p>
-    <button class="btn-next" onclick="resetForm()" style="margin-top:24px;width:100%;">طلب جديد</button>
+    <h2 data-ar="تم إرسال طلبك! 🎉" data-en="Order Sent! 🎉">تم إرسال طلبك! 🎉</h2>
+    <div class="order-confirm-badge" id="success-order-num" data-ar-prefix="رقم طلبك: " data-en-prefix="Order Number: ">رقم طلبك: ----</div>
+    <p data-ar="شكراً لثقتك بدل باستا<br>سيتم التواصل معك لتأكيد طلبك في أقرب وقت 🌟" data-en="Thank you for choosing Del Pasta<br>We will contact you to confirm your order shortly 🌟">شكراً لثقتك بدل باستا<br>سيتم التواصل معك لتأكيد طلبك في أقرب وقت 🌟</p>
+    <button class="btn-next" onclick="resetForm()" data-ar="طلب جديد" data-en="New Order" style="margin-top:24px;width:100%;">طلب جديد</button>
   </div>
 </div>
 
 <script>
-const PRICES = {'10-12':96,'20-22':126,'30-32':160,'40-42':186,'50-52':205,'60-62':225,'70-72':245,'80-82':263};
+const PRICES = {'10-12':96,'20-22':126,'30-32':158,'40-42':185,'50-52':203,'60-62':223,'70-72':243,'80-82':265,'100-102':320};
 const GUEST_RANGES = [
   {label:'10 - 12 شخص',value:'10-12'},{label:'20 - 22 شخص',value:'20-22'},
   {label:'30 - 32 شخص',value:'30-32'},{label:'40 - 42 شخص',value:'40-42'},
   {label:'50 - 52 شخص',value:'50-52'},{label:'60 - 62 شخص',value:'60-62'},
-  {label:'70 - 72 شخص',value:'70-72'},{label:'80 - 82 شخص',value:'80-82'}
+  {label:'70 - 72 شخص',value:'70-72'},{label:'80 - 82 شخص',value:'80-82'},
+  {label:'100 - 102 شخص',value:'100-102'}
 ];
+
 const MENUS = {
-  main:{ar:['برياني خصوصي + لحم شواء','برياني خصوصي + دجاج شواء','مكبوس دجاج','دجاج بالزبدة + أرز أبيض','صينية دجاج وبطاطا بالفرن + أرز أبيض','صينية دجاج وبطاطا بالفرن + خبز لبناني','مندي دجاج','هريس لحم','هريس دجاج'],en:['Special Biryani + Grilled Meat','Special Biryani + Grilled Chicken','Chicken Kabsa','Butter Chicken + White Rice','Oven Chicken & Potato + White Rice','Oven Chicken & Potato + Lebanese Bread','Chicken Mandi','Meat Harees','Chicken Harees'],max:2},
-  app:{ar:['سمبوسة دجاج','سمبوسة مكس أجبان','مسخن دجاج','فطاير لبنة وجبن','مكرونة دجاج بالبشاميل','باستا بيضاء بالدجاج','باستا حمراء بالدجاج','كريسبي ساندويش','ساندويش دجاج بالتورتيلا','ساندويش فلافل','محشي ورق عنب','محشي ملفوف','ميني بيتزا دجاج','ميني بيتزا خضار'],en:['Chicken Samboosa','Mixed Cheese Samboosa','Chicken Musakhan','Labneh & Cheese Fatayer','Chicken Pasta Béchamel','White Chicken Pasta','Red Chicken Pasta','Crispy Sandwich','Chicken Tortilla Sandwich','Falafel Sandwich','Stuffed Vine Leaves','Stuffed Cabbage','Mini Chicken Pizza','Mini Veggie Pizza'],max:3},
-  sal:{ar:['سلطة فتوش','سلطة تبولة','سلطة روب وخيار','سلطة مشكلة بالصوص الخاص','سلطة الكينوا'],en:['Fattoush Salad','Tabbouleh Salad','Yogurt & Cucumber Salad','Mixed Salad with Special Sauce','Quinoa Salad'],max:2},
-  des:{ar:['ترايفل مانجو','بودينج الشيا بالمانجو','حلى السنافر','بودينج البسكويت والشوكولاه','تشيز كيك'],en:['Mango Trifle','Mango Chia Pudding','Smurf Dessert','Biscuit & Chocolate Pudding','Cheesecake'],max:2},
-  drk:{ar:['مشروبات غازية','عصائر','تشكيلة عصائر وغازيات'],en:['Soft Drinks','Juices','Mixed Juices & Soft Drinks'],max:1}
+  main:{ar:['برياني خصوصي + لحم شواء','برياني خصوصي + دجاج شواء','مكبوس دجاج','دجاج بالزبدة + أرز أبيض','صينية دجاج وبطاطا بالفرن + أرز أبيض','صينية دجاج وبطاطا بالفرن + خبز لبناني','مندي دجاج','هريس لحم','هريس دجاج'],en:['Biryani + Grilled Meat','Biryani + Grilled Chicken','Chicken Kabsa','Butter Chicken + White Rice','Oven Chicken & Potato + White Rice','Oven Chicken & Potato + Bread','Chicken Mandi','Meat Harees','Chicken Harees'],max:2},
+  app:{ar:['سمبوسة دجاج','سمبوسة مكس أجبان','مسخن دجاج','فطاير لبنة وجبن','مكرونة دجاج بالبشاميل','باستا بيضاء بالدجاج','باستا حمراء بالدجاج','كريسبي ساندويش','ساندويش دجاج بالتورتيلا','ساندويش فلافل','محشي ورق عنب','محشي ملفوف','ميني بيتزا دجاج','ميني بيتزا خضار'],en:['Chicken Samboosa','Mixed Cheese Samboosa','Chicken Musakhan','Labneh & Cheese Fatayer','Chicken Bechamel Pasta','White Chicken Pasta','Red Chicken Pasta','Crispy Sandwich','Chicken Tortilla Wrap','Falafel Sandwich','Stuffed Vine Leaves','Stuffed Cabbage Rolls','Mini Chicken Pizza','Mini Veggie Pizza'],max:3},
+  sal:{ar:['سلطة فتوش','سلطة تبولة','سلطة روب وخيار','سلطة مشكلة بالصوص الخاص','سلطة الكينوا'],en:['Fattoush','Tabbouleh','Yogurt & Cucumber Salad','House Special Mixed Salad','Quinoa Salad'],max:2},
+  des:{ar:['ترايفل مانجو','بودينج الشيا بالمانجو','حلى السنافر','بودينج البسكويت والشوكولاه','تشيز كيك','أم علي'],en:['Mango Trifle','Mango Chia Pudding','Smurf Dessert','Biscuit & Chocolate Pudding','Cheesecake','Om Ali'],max:2},
+  drk:{ar:['مشروبات غازية','عصائر','تشكيلة عصائر وغازيات'],en:['Soft Drinks','Fresh Juices','Juices & Soft Drinks Mixed'],max:1}
 };
+
+// ===== بيانات الإفطار =====
+const BREAKFAST_MENU = {
+  main: {
+    title:'🍲 أطباق رئيسية', titleEn:'🍲 Main Dishes',
+    items:[
+      {name:'سخانة عرسية بالدجاج',nameEn:'Chicken Wedding Hotpot',price:14,unit:'سخانة 9 لتر',unitEn:'9L Hotpot'},
+      {name:'سخانة ثريد بالدجاج والخضار',nameEn:'Chicken & Vegetable Thareed Hotpot',price:14.5,unit:'سخانة 9 لتر',unitEn:'9L Hotpot'},
+      {name:'سخانة هريس باللحم',nameEn:'Meat Harees Hotpot',price:14.5,unit:'سخانة 9 لتر',unitEn:'9L Hotpot'},
+      {name:'سخانة هريس بالدجاج',nameEn:'Chicken Harees Hotpot',price:14,unit:'سخانة 9 لتر',unitEn:'9L Hotpot'},
+      {name:'سخانة بلاليط (بالطريقة الإماراتية)',nameEn:'Balaleet Hotpot (Emirati Style)',price:13,unit:'سخانة 9 لتر',unitEn:'9L Hotpot'},
+      {name:'سخانة معكرونة دجاج بالباشميل',nameEn:'Chicken Bechamel Pasta Hotpot',price:13.5,unit:'سخانة 9 لتر',unitEn:'9L Hotpot'},
+      {name:'سخانة باستا بيضاء بالدجاج',nameEn:'White Chicken Pasta Hotpot',price:15,unit:'سخانة 9 لتر',unitEn:'9L Hotpot'},
+      {name:'سخانة باستا حمراء بالدجاج',nameEn:'Red Chicken Pasta Hotpot',price:15,unit:'سخانة 9 لتر',unitEn:'9L Hotpot'},
+      {name:'سخانة عدس + خبز جباتي (20 قطعة)',nameEn:'Lentil Hotpot + Chapati Bread (20 pcs)',price:5.7,unit:'',unitEn:''},
+    ]
+  },
+  snacks: {
+    title:'🥙 خفايف ومقبلات', titleEn:'🥙 Appetizers & Snacks',
+    items:[
+      {name:'ساندويش دجاج',nameEn:'Chicken Sandwich',price:3.9,unit:'10 قطع',unitEn:'10 pcs'},
+      {name:'فطاير جبن ولبنة زعتر',nameEn:'Cheese & Labneh Fatayer',price:3.0,unit:'12 قطعة',unitEn:'12 pcs'},
+      {name:'ساندويش كرسبي بالدجاج',nameEn:'Crispy Chicken Sandwich',price:3.6,unit:'10 قطع',unitEn:'10 pcs'},
+      {name:'مسخن رول',nameEn:'Musakhan Roll',price:1.7,unit:'10 قطع',unitEn:'10 pcs'},
+      {name:'سمبوسة دجاج',nameEn:'Chicken Samboosa',price:1.7,unit:'10 قطع',unitEn:'10 pcs'},
+      {name:'سمبوسة مكس الأجبان',nameEn:'Mixed Cheese Samboosa',price:1.7,unit:'10 قطع',unitEn:'10 pcs'},
+      {name:'سمبوسة خضار',nameEn:'Vegetable Samboosa',price:1.5,unit:'10 قطع',unitEn:'10 pcs'},
+      {name:'محشي ورق عنب',nameEn:'Stuffed Vine Leaves',price:1.0,unit:'8 قطع',unitEn:'8 pcs'},
+      {name:'محشي ملفوف',nameEn:'Stuffed Cabbage Rolls',price:1.0,unit:'8 قطع',unitEn:'8 pcs'},
+      {name:'ميني بيتزا دجاج',nameEn:'Mini Chicken Pizza',price:2.2,unit:'10 قطع',unitEn:'10 pcs'},
+    ]
+  },
+  desserts: {
+    title:'🍮 حلويات', titleEn:'🍮 Desserts',
+    items:[
+      {name:'ميني سمبوسة بالجبن والشيرة',nameEn:'Mini Cheese & Syrup Samboosa',price:4.0,unit:'50 قطعة',unitEn:'50 pcs'},
+      {name:'ميني سمبوسة بالجبن والشيرة',nameEn:'Mini Cheese & Syrup Samboosa (Large)',price:5.5,unit:'100 قطعة',unitEn:'100 pcs'},
+      {name:'سينابون',nameEn:'Cinnamon Rolls',price:3.3,unit:'10 قطع',unitEn:'10 pcs'},
+      {name:'ترايفل مانجو (علب صغيرة)',nameEn:'Mango Trifle (Small Cups)',price:4.5,unit:'20 علبة 2 أونصة',unitEn:'20 cups (2oz)'},
+      {name:'ترايفل مانجو بايركس وسط',nameEn:'Mango Trifle (Medium)',price:8.0,unit:'بايركس وسط',unitEn:'Medium Pyrex'},
+      {name:'ترايفل مانجو حجم عائلي',nameEn:'Mango Trifle (Family Size)',price:14.0,unit:'حجم عائلي',unitEn:'Family Size'},
+      {name:'قالب بسبوسة وسط',nameEn:'Basbousa Cake (Medium)',price:7.5,unit:'قالب وسط',unitEn:'Medium'},
+      {name:'سخانة أم علي',nameEn:'Om Ali Hotpot',price:15.0,unit:'سخانة 9 لتر',unitEn:'9L Hotpot'},
+    ]
+  },
+  salads: {
+    title:'🥗 سلطات', titleEn:'🥗 Salads',
+    items:[
+      {name:'سلطة فتوش',nameEn:'Fattoush Salad',price:5.0,unit:'',unitEn:''},
+      {name:'سلطة تبولة',nameEn:'Tabbouleh Salad',price:5.0,unit:'',unitEn:''},
+      {name:'سلطة مشكلة بالصوص الخاص',nameEn:'House Special Mixed Salad',price:5.5,unit:'',unitEn:''},
+      {name:'سلطة الكينوا',nameEn:'Quinoa Salad',price:5.5,unit:'',unitEn:''},
+    ]
+  },
+  drinks: {
+    title:'☕ مشروبات', titleEn:'☕ Drinks',
+    items:[
+      {name:'دلة كرك',nameEn:'Karak Tea Pot',price:3.5,unit:'1 لتر',unitEn:'1 Liter'},
+      {name:'دلة قهوة عمانية',nameEn:'Omani Coffee Pot',price:3.5,unit:'1 لتر',unitEn:'1 Liter'},
+      {name:'جيك عصير المراعي أو مزون',nameEn:'Juice Pack (Al Marai / Mazoon)',price:5.5,unit:'جيك',unitEn:'Pack'},
+      {name:'علب عصير المراعي أو مزون (250مل)',nameEn:'Juice Cans (250ml)',price:0.25,unit:'علبة',unitEn:'Can'},
+    ]
+  }
+};
+
+let brkfQty={};
+let brkfGuests=10;
+
+function initBreakfast(){
+  brkfQty={};
+  brkfGuests=10;
+  document.getElementById('brkf-guests-num').textContent=brkfGuests;
+  renderBreakfastItems();
+}
+
+function changeBrkfGuests(delta){
+  brkfGuests=Math.max(10,brkfGuests+delta);
+  document.getElementById('brkf-guests-num').textContent=brkfGuests;
+}
+
+function renderBreakfastItems(){
+  Object.keys(BREAKFAST_MENU).forEach(cat=>{
+    const container=document.getElementById('brkf-grp-'+cat);
+    if(!container)return;
+    container.innerHTML=BREAKFAST_MENU[cat].items.map((item,i)=>{
+      const key=cat+'_'+i;
+      const qty=brkfQty[key]||0;
+      const displayName=lang==='en'&&item.nameEn?item.nameEn:item.name;
+      const displayUnit=lang==='en'&&item.unitEn?item.unitEn:item.unit;
+      const currency=lang==='ar'?'ر.ع':'OMR';
+      return `<div class="brkf-item${qty>0?' active':''}" id="brkf-item-${key}">
+        <div class="brkf-item-info">
+          <div class="brkf-item-name">${displayName}</div>
+          <div class="brkf-item-price">${item.price.toFixed(3)} ${currency}${displayUnit?' — '+displayUnit:''}</div>
+        </div>
+        <div class="brkf-qty">
+          <button class="brkf-qty-btn" onclick="changeBrkfQty('${cat}',${i},-1)">−</button>
+          <span class="brkf-qty-num" id="brkf-qty-${key}">${qty}</span>
+          <button class="brkf-qty-btn" onclick="changeBrkfQty('${cat}',${i},1)">+</button>
+        </div>
+      </div>`;
+    }).join('');
+  });
+  updateBrkfSummary();
+}
+
+function changeBrkfQty(cat,idx,delta){
+  const key=cat+'_'+idx;
+  brkfQty[key]=Math.max(0,(brkfQty[key]||0)+delta);
+  const qtyEl=document.getElementById('brkf-qty-'+key);
+  const itemEl=document.getElementById('brkf-item-'+key);
+  if(qtyEl)qtyEl.textContent=brkfQty[key];
+  if(itemEl)itemEl.classList.toggle('active',brkfQty[key]>0);
+  updateBrkfSummary();
+}
+
+function updateBrkfSummary(){
+  let total=0, rows='';
+  const currency=lang==='ar'?'ر.ع':'OMR';
+  Object.keys(BREAKFAST_MENU).forEach(cat=>{
+    BREAKFAST_MENU[cat].items.forEach((item,i)=>{
+      const key=cat+'_'+i;
+      const qty=brkfQty[key]||0;
+      if(qty>0){
+        const sub=qty*item.price;
+        total+=sub;
+        const displayName=lang==='en'&&item.nameEn?item.nameEn:item.name;
+        const displayUnit=lang==='en'&&item.unitEn?item.unitEn:item.unit;
+        rows+=`<div class="brkf-sum-row"><span>${displayName} × ${qty}${displayUnit?' ('+displayUnit+')':''}</span><span>${sub.toFixed(3)} ${currency}</span></div>`;
+      }
+    });
+  });
+  const sumBox=document.getElementById('brkf-summary-box');
+  const sumRows=document.getElementById('brkf-sum-rows');
+  const sumTotal=document.getElementById('brkf-sum-total');
+  if(rows){
+    sumBox.style.display='block';
+    sumRows.innerHTML=rows;
+    sumTotal.textContent=total.toFixed(3)+' '+currency;
+  } else {
+    sumBox.style.display='none';
+  }
+}
+
+function getBrkfTotal(){
+  let total=0;
+  Object.keys(BREAKFAST_MENU).forEach(cat=>{
+    BREAKFAST_MENU[cat].items.forEach((item,i)=>{
+      total+=(brkfQty[cat+'_'+i]||0)*item.price;
+    });
+  });
+  return total;
+}
+
+function getBrkfSelectedItems(){
+  let lines=[];
+  Object.keys(BREAKFAST_MENU).forEach(cat=>{
+    BREAKFAST_MENU[cat].items.forEach((item,i)=>{
+      const qty=brkfQty[cat+'_'+i]||0;
+      if(qty>0) lines.push(`• ${item.name} × ${qty}${item.unit?' ('+item.unit+')':''} — ${(qty*item.price).toFixed(3)} ر.ع`);
+    });
+  });
+  return lines;
+}
 const DAYS_AR=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
 const DAYS_EN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
@@ -538,12 +761,29 @@ function init(){
   const today=new Date().toISOString().split('T')[0];
   document.getElementById('f-date').min=today;
   document.getElementById('f-date').addEventListener('change',showDayName);
+  // حقل "أخرى" للولاية
+  document.getElementById('f-gov').addEventListener('change',function(){
+    const wrap=document.getElementById('gov-other-wrap');
+    if(wrap) wrap.style.display=this.value==='أخرى'?'block':'none';
+  });
   const sel=document.getElementById('f-guests');
   GUEST_RANGES.forEach(r=>{
     const o=document.createElement('option');
     o.value=r.value;o.textContent=r.label;sel.appendChild(o);
   });
   ['main','app','sal','des','drk'].forEach(renderCheckboxes);
+  updateStepLabels();
+}
+
+const STEP_LABELS={
+  ar:['التفاصيل','الباقة','الأصناف','التأكيد'],
+  en:['Details','Package','Items','Confirm']
+};
+function updateStepLabels(){
+  for(let i=1;i<=4;i++){
+    const sl=document.getElementById('sl'+i);
+    if(sl) sl.textContent=STEP_LABELS[lang][i-1];
+  }
 }
 
 function showDayName(){
@@ -551,7 +791,7 @@ function showDayName(){
   if(!val){document.getElementById('day-display').textContent='';return;}
   const d=new Date(val+'T12:00:00');
   const n=lang==='ar'?DAYS_AR[d.getDay()]:DAYS_EN[d.getDay()];
-  document.getElementById('day-display').textContent='📅 يوم '+n;
+  document.getElementById('day-display').textContent=(lang==='ar'?'📅 يوم ':'📅 ')+n;
 }
 
 function updatePrice(){
@@ -562,6 +802,7 @@ function updatePrice(){
 
 function renderCheckboxes(grp){
   const c=document.getElementById('grp-'+grp);
+  if(!c)return;
   c.innerHTML=MENUS[grp][lang].map((item,i)=>`
     <label class="check-item${selections[grp].includes(i)?' selected':''}" onclick="toggleCheck('${grp}',${i},this)">
       <div class="check-box"><svg viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -588,8 +829,13 @@ function enforceLimits(grp){
 function updateCounter(grp){
   const max=MENUS[grp].max,cnt=selections[grp].length;
   const el=document.getElementById('cnt-'+grp);if(!el)return;
-  if(grp==='drk'){el.textContent=cnt>0?'✓ تم':'اختر 1';el.className='cat-count-badge'+(cnt>0?' done':'');}
-  else{el.textContent=cnt+' / '+max;el.className='cat-count-badge'+(cnt>=max?' done':'');}
+  if(grp==='drk'){
+    el.textContent=cnt>0?'✓ '+(lang==='ar'?'تم':'Done'):(lang==='ar'?'اختر 1':'Choose 1');
+    el.className='cat-count-badge'+(cnt>0?' done':'');
+  } else {
+    el.textContent=cnt+' / '+max;
+    el.className='cat-count-badge'+(cnt>=max?' done':'');
+  }
 }
 
 function selectMeal(type){
@@ -597,6 +843,18 @@ function selectMeal(type){
   document.querySelectorAll('.meal-card').forEach(c=>c.classList.remove('selected'));
   document.getElementById('meal-'+type).classList.add('selected');
   hide('err-meal');
+  const isBreakfast=type==='breakfast';
+  // Step 2
+  const ld2=document.getElementById('step2-lunch-dinner');
+  const brkf2=document.getElementById('step2-breakfast');
+  if(ld2)ld2.style.display=isBreakfast?'none':'block';
+  if(brkf2)brkf2.style.display=isBreakfast?'block':'none';
+  // Step 3
+  const ld3=document.getElementById('step3-lunch-dinner');
+  const brkf3=document.getElementById('step3-breakfast');
+  if(ld3)ld3.style.display=isBreakfast?'none':'block';
+  if(brkf3)brkf3.style.display=isBreakfast?'block':'none';
+  if(isBreakfast){initBreakfast();renderBreakfastItems();}
 }
 
 function selectPkg(id){
@@ -622,6 +880,7 @@ function goStep(n){
 
 function validateStep(s){
   let ok=true;
+  const isEn=lang==='en';
   if(s===1){
     if(!document.getElementById('f-name').value.trim()){show('err-name');ok=false;}else hide('err-name');
     if(!document.getElementById('f-phone').value.trim()){show('err-phone');ok=false;}else hide('err-phone');
@@ -629,12 +888,16 @@ function validateStep(s){
     if(!document.getElementById('f-date').value){show('err-date');ok=false;}else hide('err-date');
     if(!document.getElementById('f-gov').value){show('err-gov');ok=false;}else hide('err-gov');
   }
-  if(s===2){
+  if(s===2&&selectedMeal!=='breakfast'){
     if(!document.getElementById('f-guests').value){show('err-guests');ok=false;}else hide('err-guests');
   }
   if(s===3){
-    if(selections.drk.length===0){show('err-drinks');ok=false;}else hide('err-drinks');
-    if(selections.main.length<2||selections.app.length<3||selections.sal.length<2||selections.des.length<2){ok=false;alert('يرجى إكمال اختيار جميع الأصناف المطلوبة');}
+    if(selectedMeal==='breakfast'){
+      if(getBrkfTotal()===0){ok=false;alert(isEn?'Please select at least one item':'يرجى اختيار صنف واحد على الأقل');}
+    } else {
+      if(selections.drk.length===0){show('err-drinks');ok=false;}else hide('err-drinks');
+      if(selections.main.length<2||selections.app.length<3||selections.sal.length<2||selections.des.length<2){ok=false;alert(isEn?'Please complete selecting all required items':'يرجى إكمال اختيار جميع الأصناف المطلوبة');}
+    }
   }
   if(!ok){document.getElementById('step'+s).classList.add('shake');setTimeout(()=>document.getElementById('step'+s).classList.remove('shake'),400);}
   return ok;
@@ -644,26 +907,113 @@ function show(id){document.getElementById(id).style.display='block';}
 function hide(id){document.getElementById(id).style.display='none';}
 
 function fillSummary(){
-  const mealNames={breakfast:'ريوق',lunch:'غداء',dinner:'عشاء'};
-  const gv=document.getElementById('f-guests').value;
-  const price=PRICES[gv];
+  const mealNamesAr={breakfast:'ريوق',lunch:'غداء',dinner:'عشاء'};
+  const mealNamesEn={breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner'};
+  const mealNames=lang==='ar'?mealNamesAr:mealNamesEn;
+  const DAYS=lang==='ar'?DAYS_AR:DAYS_EN;
+  const currency=lang==='ar'?'ر.ع':'OMR';
+
   document.getElementById('sum-name').textContent=document.getElementById('f-name').value;
   document.getElementById('sum-phone').textContent=document.getElementById('f-phone').value;
   document.getElementById('sum-meal').textContent=mealNames[selectedMeal]||selectedMeal;
   const dv=document.getElementById('f-date').value;
   const d=new Date(dv+'T12:00:00');
-  document.getElementById('sum-date').textContent=DAYS_AR[d.getDay()]+' '+dv;
-  document.getElementById('sum-gov').textContent=document.getElementById('f-gov').value;
-  document.getElementById('sum-guests').textContent=gv+' شخص';
-  document.getElementById('sum-total').textContent=price?price+'.000':'يحدد لاحقاً';
+  document.getElementById('sum-date').textContent=DAYS[d.getDay()]+' '+dv;
+
+  // ترجمة الولاية المختارة
+  const govRaw=document.getElementById('f-gov').value;
+  const govOther=(document.getElementById('f-gov-other')||{}).value||'';
+  const govMapEn={'صحار':'Sohar','شناص':'Shinas','لوى':'Liwa','صحم':'Saham',
+    'خابورة':'Khabourah','السويق':'Al Suwaiq','الرستاق':'Al Rustaq',
+    'نخل':'Nakhal','العوابي':'Al Awabi','وادي المعاول':'Wadi Al Maawil',
+    'المصنعة':'Al Musanaah','بركاء':'Barka','مسقط':'Muscat','أخرى':'Other'};
+  const govDisplay=govRaw==='أخرى'
+    ?(govOther||(lang==='ar'?'أخرى':'Other'))
+    :(lang==='en'?(govMapEn[govRaw]||govRaw):govRaw);
+  document.getElementById('sum-gov').textContent=govDisplay;
   document.getElementById('ref-display').textContent='#'+orderNumber;
-  ['main','app','sal','des','drk'].forEach(grp=>{
-    document.getElementById('sum-'+grp).innerHTML=selections[grp].map(i=>`<span class="chip">${MENUS[grp].ar[i]}</span>`).join('');
-  });
-  const ex=document.getElementById('f-extras').value.trim();
+
+  if(selectedMeal==='breakfast'){
+    document.getElementById('sum-guests').textContent=brkfGuests+(lang==='ar'?' شخص':' guests');
+    const total=getBrkfTotal();
+    document.getElementById('sum-total').textContent=total>0?total.toFixed(3)+' '+currency:(lang==='ar'?'يحدد لاحقاً':'To be confirmed');
+    // عرض أصناف الريوق — كل قسم في صفه
+    const catTitles={
+      main:    {ar:'أطباق رئيسية', en:'Main Dishes'},
+      snacks:  {ar:'خفايف',        en:'Appetizers'},
+      desserts:{ar:'حلويات',       en:'Desserts'},
+      salads:  {ar:'سلطات',        en:'Salads'},
+      drinks:  {ar:'مشروبات',      en:'Drinks'},
+    };
+    // أخفي صفوف غداء/عشاء وأظهر صف الرئيسية بس
+    ['sum-app','sum-sal','sum-des','sum-drk'].forEach(id=>{
+      const row=document.getElementById(id);
+      if(row&&row.closest)row.closest('.summary-row').style.display='none';
+    });
+    // نبني HTML مخصص لأصناف الريوق
+    const sumMain=document.getElementById('sum-main');
+    const mainRow=sumMain&&sumMain.closest('.summary-row');
+    if(mainRow) mainRow.style.display='none'; // نخفي الصف الأصلي
+    // نحذف أي عرض سابق للريوق
+    const oldBrkfDisplay=document.getElementById('brkf-step4-display');
+    if(oldBrkfDisplay) oldBrkfDisplay.remove();
+    // نبني الجدول الجديد
+    const summaryBody=document.getElementById('dishes-summary-body');
+    if(summaryBody){
+      let html='';
+      Object.keys(BREAKFAST_MENU).forEach(cat=>{
+        const catItems=[];
+        BREAKFAST_MENU[cat].items.forEach((item,i)=>{
+          const qty=brkfQty[cat+'_'+i]||0;
+          const displayName=lang==='en'&&item.nameEn?item.nameEn:item.name;
+          if(qty>0) catItems.push(`<span class="chip">${displayName} ×${qty}</span>`);
+        });
+        if(catItems.length>0){
+          const title=lang==='en'?catTitles[cat].en:catTitles[cat].ar;
+          html+=`<div class="summary-row"><span class="sum-key">${title}</span><div class="chips">${catItems.join('')}</div></div>`;
+        }
+      });
+      const brkfDiv=document.createElement('div');
+      brkfDiv.id='brkf-step4-display';
+      brkfDiv.innerHTML=html;
+      summaryBody.appendChild(brkfDiv);
+    }
+    // ملاحظة التوصيل للريوق
+    const delivEl=document.getElementById('step4-delivery-note');
+    if(delivEl) delivEl.innerHTML=lang==='en'
+      ?'📦 <b>Delivery & setup fee:</b> 19–39 OMR depending on location and number of items. For 80+ guests: 50–60 OMR. We\'ll contact you to confirm after receiving your order.'
+      :'📦 <b>رسوم التوصيل والتنظيم:</b> من 19 إلى 39 ر.ع حسب الموقع وعدد الأصناف. للطلبات فوق 80 شخص: 50–60 ر.ع. سنتواصل لتأكيد التفاصيل بعد استلام طلبك.';
+  } else {
+    // أزل عرض الريوق لو كان موجود وأرجع الصفوف الأصلية
+    const oldBrkfDisplay=document.getElementById('brkf-step4-display');
+    if(oldBrkfDisplay) oldBrkfDisplay.remove();
+    const mainRow=document.getElementById('sum-main');
+    if(mainRow&&mainRow.closest)mainRow.closest('.summary-row').style.display='flex';
+    const gv=document.getElementById('f-guests').value;
+    const price=PRICES[gv];
+    document.getElementById('sum-guests').textContent=gv+(lang==='ar'?' شخص':' guests');
+    document.getElementById('sum-total').textContent=price?price+'.000':(lang==='ar'?'يحدد لاحقاً':'To be confirmed');
+    ['main','app','sal','des','drk'].forEach(grp=>{
+      const el=document.getElementById('sum-'+grp);
+      if(el){
+        el.innerHTML=selections[grp].map(i=>`<span class="chip">${MENUS[grp][lang][i]}</span>`).join('');
+        if(el.closest)el.closest('.summary-row').style.display='flex';
+      }
+    });
+  }
+  const ex=document.getElementById('f-extras')?document.getElementById('f-extras').value.trim():'';
   const nt=document.getElementById('f-notes').value.trim();
   if(ex){document.getElementById('sum-extras-row').style.display='flex';document.getElementById('sum-extras').textContent=ex;}
+  else{document.getElementById('sum-extras-row').style.display='none';}
   if(nt){document.getElementById('sum-notes-row').style.display='flex';document.getElementById('sum-notes').textContent=nt;}
+  else{document.getElementById('sum-notes-row').style.display='none';}
+  // ملاحظة التوصيل للبوفيه (تُحدّث إن لم يكن ريوق)
+  if(selectedMeal!=='breakfast'){
+    const delivEl=document.getElementById('step4-delivery-note');
+    if(delivEl) delivEl.innerHTML=lang==='en'
+      ?'📦 <b>Delivery fee:</b> Free in Sohar ✓ — Other areas: 7–39 OMR depending on location. We\'ll confirm the delivery fee after receiving your order.'
+      :'📦 <b>رسوم التوصيل:</b> مجاني في صحار ✓ — باقي الولايات: من 7 إلى 39 ر.ع حسب الموقع. سنتواصل لتأكيد رسوم التوصيل بعد استلام طلبك.';
+  }
 }
 
 function sendWhatsApp(){
@@ -671,96 +1021,174 @@ function sendWhatsApp(){
   const phone=document.getElementById('f-phone').value.trim();
   const dv=document.getElementById('f-date').value;
   const d=new Date(dv+'T12:00:00');
-  const gov=document.getElementById('f-gov').value;
+  const govRaw2=document.getElementById('f-gov').value;
+  const govOther2=(document.getElementById('f-gov-other')||{}).value||'';
+  const gov=govRaw2==='أخرى'?(govOther2||'أخرى'):govRaw2;
   const loc=document.getElementById('f-location').value.trim();
-  const gv=document.getElementById('f-guests').value;
-  const price=PRICES[gv];
-  const ex=document.getElementById('f-extras').value.trim();
   const nt=document.getElementById('f-notes').value.trim();
   const mn={breakfast:'ريوق',lunch:'غداء',dinner:'عشاء'};
-  const gi=grp=>selections[grp].map(i=>MENUS[grp].ar[i]).join('، ');
+  const isBreakfast=selectedMeal==='breakfast';
 
-  let msg=`🌟 *طلب بوفيه جديد — دل باستا*
-`;
-  msg+=`🔖 *رقم الطلب:* #${orderNumber}
+  let msg=`🌟 *طلب بوفيه جديد — دل باستا*\n`;
+  msg+=`🔖 *رقم الطلب:* #${orderNumber}\n\n`;
+  msg+=`👤 *الاسم:* ${name}\n`;
+  msg+=`📱 *الجوال:* ${phone}\n`;
+  msg+=`🍽️ *نوع الوجبة:* ${mn[selectedMeal]}\n`;
+  msg+=`📅 *التاريخ:* ${DAYS_AR[d.getDay()]} ${dv}\n`;
+  msg+=`📍 *الولاية:* ${gov}\n`;
+  if(loc)msg+=`🗺️ *الموقع:* ${loc}\n`;
 
-`;
-  msg+=`👤 *الاسم:* ${name}
-`;
-  msg+=`📱 *الجوال:* ${phone}
-`;
-  msg+=`🍽️ *نوع الوجبة:* ${mn[selectedMeal]}
-`;
-  msg+=`📅 *التاريخ:* ${DAYS_AR[d.getDay()]} ${dv}
-`;
-  msg+=`📍 *الولاية:* ${gov}
-`;
-  if(loc)msg+=`🗺️ *الموقع:* ${loc}
-`;
-  msg+=`👥 *عدد الضيوف:* ${gv} شخص
-`;
-  msg+=`💰 *إجمالي الباقة:* ${price?price+'.000 ر.ع':'يحدد لاحقاً'}
+  let allItems='',sheetPrice='',sheetGuests='';
 
-`;
-  msg+=`🍖 *الأصناف الرئيسية:*\n${selections['main'].map(i=>'• '+MENUS['main'].ar[i]).join('\n')}\n\n`;
-  msg+=`🥙 *الخفايف:*\n${selections['app'].map(i=>'• '+MENUS['app'].ar[i]).join('\n')}\n\n`;
-  msg+=`🥗 *السلطات:*\n${selections['sal'].map(i=>'• '+MENUS['sal'].ar[i]).join('\n')}\n\n`;
-  msg+=`🍮 *الحلويات:*\n${selections['des'].map(i=>'• '+MENUS['des'].ar[i]).join('\n')}\n\n`;
-  msg+=`🥤 *المشروبات:*\n${selections['drk'].map(i=>'• '+MENUS['drk'].ar[i]).join('\n')}\n`;
-  if(ex)msg+=`
-✏️ *طلبات إضافية:* ${ex}
-`;
-  if(nt)msg+=`📝 *ملاحظات:* ${nt}
-`;
-  msg+=`
-━━━━━━━━━━━━━━
-_دل باستا | أكل متروس لذة منذ 2018_`;
+  if(isBreakfast){
+    sheetGuests=String(brkfGuests);
+    msg+=`👥 *عدد المعازيم:* ${brkfGuests} شخص\n`;
+    const total=getBrkfTotal();
+    msg+=`💰 *المجموع:* ${total.toFixed(3)} ر.ع\n`;
+    msg+=`⚠️ التوصيل والتنظيم يُحدد بعد الاتفاق (19-39 ر.ع)\n\n`;
+    msg+=`🛒 *الأصناف المطلوبة:*\n`;
+    getBrkfSelectedItems().forEach(line=>msg+=line+'\n');
+    allItems=getBrkfSelectedItems().join('\n');
+    sheetPrice=total.toFixed(3);
+  } else {
+    const gv=document.getElementById('f-guests').value;
+    const price=PRICES[gv];
+    const ex=document.getElementById('f-extras')?document.getElementById('f-extras').value.trim():'';
+    sheetGuests=gv;
+    msg+=`👥 *عدد الضيوف:* ${gv} شخص\n`;
+    msg+=`💰 *إجمالي الباقة:* ${price?price+'.000 ر.ع':'يحدد لاحقاً'}\n\n`;
+    msg+=`🍖 *الأصناف الرئيسية:*\n${selections['main'].map(i=>'• '+MENUS['main'].ar[i]).join('\n')}\n\n`;
+    msg+=`🥙 *الخفايف:*\n${selections['app'].map(i=>'• '+MENUS['app'].ar[i]).join('\n')}\n\n`;
+    msg+=`🥗 *السلطات:*\n${selections['sal'].map(i=>'• '+MENUS['sal'].ar[i]).join('\n')}\n\n`;
+    msg+=`🍮 *الحلويات:*\n${selections['des'].map(i=>'• '+MENUS['des'].ar[i]).join('\n')}\n\n`;
+    msg+=`🥤 *المشروبات:*\n${selections['drk'].map(i=>'• '+MENUS['drk'].ar[i]).join('\n')}\n`;
+    if(ex)msg+=`\n✏️ *طلبات إضافية:* ${ex}\n`;
+    const fmt=grp=>selections[grp].map(i=>'• '+MENUS[grp].ar[i]).join('\n');
+    allItems=['🍖 الرئيسية:\n'+fmt('main'),'🥙 الخفايف:\n'+fmt('app'),'🥗 السلطات:\n'+fmt('sal'),'🍮 الحلويات:\n'+fmt('des'),'🥤 المشروبات:\n'+fmt('drk')].join('\n\n');
+    sheetPrice=price?price+'.000':'—';
+  }
 
-  document.getElementById('success-order-num').textContent='رقم طلبك: #'+orderNumber;
+  if(nt)msg+=`\n📝 *ملاحظات:* ${nt}\n`;
+  msg+=`\n━━━━━━━━━━━━━━\n_دل باستا | أكل متروس لذة منذ 2018_`;
 
-  // ===== GOOGLE SHEETS =====
-  const formatList = (grp) => selections[grp].map(i => '• ' + MENUS[grp].ar[i]).join('\n');
-  const allItems = [
-    '🍖 الرئيسية:\n' + formatList('main'),
-    '🥙 الخفايف:\n' + formatList('app'),
-    '🥗 السلطات:\n' + formatList('sal'),
-    '🍮 الحلويات:\n' + formatList('des'),
-    '🥤 المشروبات:\n' + formatList('drk')
-  ].join('\n\n');
+  const successBadge=document.getElementById('success-order-num');
+  successBadge.textContent=(lang==='ar'?'رقم طلبك: ':'Order Number: ')+'#'+orderNumber;
 
-  const sheetData = {
-    orderNum: orderNumber,
-    timestamp: new Date().toLocaleString('ar-OM'),
-    name: name,
-    phone: phone,
-    meal: mn[selectedMeal],
-    eventDate: dv,
-    dayName: DAYS_AR[d.getDay()],
-    gov: gov,
-    guests: gv,
-    price: price ? price + '.000' : '—',
-    items: allItems,
+  const sheetData={
+    orderNum:orderNumber,
+    timestamp:new Date().toLocaleString('ar-OM'),
+    name,phone,
+    meal:mn[selectedMeal],
+    eventDate:dv,
+    dayName:DAYS_AR[d.getDay()],
+    gov,guests:sheetGuests,price:sheetPrice,items:allItems,
+    extras:document.getElementById('f-extras')?document.getElementById('f-extras').value.trim()||'—':'—',
+    notes:nt||'—',
   };
-
-  fetch('https://script.google.com/macros/s/AKfycbzPiOtsqzk_y19bL5v4D2YpdihgxIOBcohHpdbvCyc5v2RtunVyTkSCSncebmXeNgBD/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(sheetData)
-  }).catch(err => console.log('Sheets error:', err));
 
   window.open(`https://wa.me/96890942558?text=${encodeURIComponent(msg)}`,'_blank');
   goStep(5);
+
+  fetch('https://script.google.com/macros/s/AKfycbzPiOtsqzk_y19bL5v4D2YpdihgxIOBcohHpdbvCyc5v2RtunVyTkSCSncebmXeNgBD/exec',{
+    method:'POST',mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(sheetData)
+  }).catch(err=>console.log('Sheets error:',err));
 }
 
+// ===== setLang الصحيحة =====
 function setLang(l){
   lang=l;
   document.documentElement.lang=l;
   document.documentElement.dir=l==='ar'?'rtl':'ltr';
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.includes(l==='ar'?'عربي':'EN')));
-  document.querySelectorAll('[data-ar]').forEach(el=>el.innerHTML=el.getAttribute('data-'+l)||el.getAttribute('data-ar'));
+
+  // تحديث كل عنصر عنده data-ar / data-en
+  // القاعدة: لو العنصر نفسه فيه نص مباشر (لا أبناء مهمين) → innerHTML
+  // لو فيه أبناء (مثل <span class="req">) → نحدث فقط أول text node
+  document.querySelectorAll('[data-ar]').forEach(el=>{
+    const val=el.getAttribute('data-'+l)||el.getAttribute('data-ar');
+    if(!val)return;
+    // تجاهل عناصر الـ select options — نتعامل معها بشكل منفصل
+    if(el.tagName==='OPTION')return;
+    // لو العنصر فيه أبناء عناصر (مو نصوص بس) → لا نمسه، لأنه label يحتوي span.req
+    const hasElementChildren=[...el.childNodes].some(n=>n.nodeType===1&&n.tagName!=='BR');
+    if(hasElementChildren){
+      // نحدث أول text node فقط
+      const textNode=[...el.childNodes].find(n=>n.nodeType===3&&n.textContent.trim());
+      if(textNode) textNode.textContent=val+' ';
+    } else {
+      el.innerHTML=val;
+    }
+  });
+
+  // تحديث الـ placeholders
+  const isEn=l==='en';
+  const placeholders={
+    'f-name':{ar:'اكتب اسمك هنا',en:'Enter your name'},
+    'f-notes':{ar:'أي تفاصيل إضافية...',en:'Any additional details...'},
+    'f-extras':{ar:'مثال: أريد 4 خفايف بدل 3...',en:'e.g. I want 4 appetizers instead of 3...'},
+    'f-location':{ar:'https://maps.google.com/...',en:'https://maps.google.com/...'},
+    'f-gov-other':{ar:'اكتب اسم منطقتك أو ولايتك...',en:'Enter your area or governorate name...'},
+  };
+  Object.entries(placeholders).forEach(([id,vals])=>{
+    const el=document.getElementById(id);
+    if(el)el.placeholder=isEn?vals.en:vals.ar;
+  });
+
+  // تحديث أول option في قائمة الولاية + كل خيارات الولاية
+  const govSel=document.getElementById('f-gov');
+  if(govSel){
+    const cv=govSel.value;
+    [...govSel.options].forEach(opt=>{
+      const ar=opt.getAttribute('data-ar');
+      const en=opt.getAttribute('data-en');
+      if(ar&&en) opt.textContent=isEn?en:ar;
+      else if(ar) opt.textContent=ar;
+    });
+    govSel.value=cv;
+  }
+
+  // تحديث عناوين أقسام الريوق
+  const brkfTitles={
+    'brkf-title-main':   {ar:'🍲 أطباق رئيسية',   en:'🍲 Main Dishes'},
+    'brkf-title-snacks': {ar:'🥙 خفايف ومقبلات',  en:'🥙 Appetizers & Snacks'},
+    'brkf-title-desserts':{ar:'🍮 حلويات',         en:'🍮 Desserts'},
+    'brkf-title-salads': {ar:'🥗 سلطات',           en:'🥗 Salads'},
+    'brkf-title-drinks': {ar:'☕ مشروبات',          en:'☕ Drinks'},
+  };
+  Object.entries(brkfTitles).forEach(([id,t])=>{
+    const el=document.getElementById(id);
+    if(el) el.textContent=isEn?t.en:t.ar;
+  });
+
+  // تحديث ملاحظة التوصيل في step4
+  const delivEl=document.getElementById('step4-delivery-note');
+  if(delivEl) delivEl.innerHTML=isEn
+    ?'📦 <b>Delivery & setup fee:</b> 7–39 OMR depending on location (free in Sohar ✓). For 80+ guests: 50–60 OMR. We\'ll contact you to confirm after receiving your order.'
+    :'📦 <b>رسوم التوصيل والتنظيم:</b> من 7 إلى 39 ر.ع حسب الموقع (مجاني في صحار ✓). للطلبات فوق 80 شخص: 50–60 ر.ع. سنتواصل لتأكيد التفاصيل بعد استلام طلبك.';
+
+  // تحديث guest ranges
+  const guestSel=document.getElementById('f-guests');
+  if(guestSel){
+    const cv=guestSel.value;
+    if(guestSel.options[0])guestSel.options[0].textContent=isEn?'Select Guest Range':'اختر نطاق العدد';
+    GUEST_RANGES.forEach((r,i)=>{
+      const opt=guestSel.options[i+1];
+      if(opt)opt.textContent=isEn?r.label.replace('شخص','guests'):r.label;
+    });
+    guestSel.value=cv;
+  }
+
+  // تحديث step labels
+  updateStepLabels();
+  // إعادة رسم الأصناف
   ['main','app','sal','des','drk'].forEach(renderCheckboxes);
   showDayName();
+  // إعادة رسم الريوق لو كان مختاراً
+  if(selectedMeal==='breakfast')renderBreakfastItems();
+  // تحديث الملخص لو كان مفتوحاً
+  if(currentStep===4)fillSummary();
 }
 
 function resetForm(){
@@ -768,10 +1196,21 @@ function resetForm(){
   selectedMeal='';selectedPkg='basic';
   orderNumber=generateOrderNumber();
   document.getElementById('order-display').textContent=orderNumber;
-  ['f-name','f-phone','f-date','f-gov','f-location','f-extras','f-notes'].forEach(id=>document.getElementById(id).value='');
+  ['f-name','f-phone','f-date','f-gov','f-location','f-extras','f-notes','f-gov-other'].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.value='';
+  });
   document.getElementById('day-display').textContent='';
   document.querySelectorAll('.meal-card').forEach(c=>c.classList.remove('selected'));
   document.getElementById('pkg-basic').classList.add('selected');
+  // إخفاء أقسام الريوق
+  const ld2=document.getElementById('step2-lunch-dinner');
+  const brkf2=document.getElementById('step2-breakfast');
+  const ld3=document.getElementById('step3-lunch-dinner');
+  const brkf3=document.getElementById('step3-breakfast');
+  if(ld2)ld2.style.display='block';
+  if(brkf2)brkf2.style.display='none';
+  if(ld3)ld3.style.display='block';
+  if(brkf3)brkf3.style.display='none';
   ['main','app','sal','des','drk'].forEach(renderCheckboxes);
   updatePrice();
   goStep(1);
