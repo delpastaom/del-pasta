@@ -1072,7 +1072,7 @@ function sendWhatsApp(){
   msg+=`\n━━━━━━━━━━━━━━\n_دل باستا | أكل متروس لذة منذ 2018_`;
 
   const successBadge=document.getElementById('success-order-num');
-  successBadge.textContent=(lang==='ar'?'رقم طلبك: ':'Order Number: ')+'#'+orderNumber;
+  successBadge.textContent=(lang==='ar'?'⏳ جارٍ تأكيد الطلب...':'⏳ Confirming order...');
 
   const sheetData={
     orderNum:orderNumber,
@@ -1086,14 +1086,27 @@ function sendWhatsApp(){
     notes:nt||'—',
   };
 
-  window.open(`https://wa.me/96890942558?text=${encodeURIComponent(msg)}`,'_blank');
+  // افتح نافذة واتساب فوراً (مطلوب داخل حدث النقر لتجنب الحجب)
+  const waWin = window.open('about:blank','_blank');
   goStep(5);
 
-  fetch('https://script.google.com/macros/s/AKfycbzPiOtsqzk_y19bL5v4D2YpdihgxIOBcohHpdbvCyc5v2RtunVyTkSCSncebmXeNgBD/exec',{
-    method:'POST',mode:'no-cors',
+  fetch('https://script.google.com/macros/s/AKfycbxgAMKWCG1mEdOEQYYH8cRkudxxQHKH8YcU4k2adrq7h8B3pOY8z7_xB-Vy8uOWQgTY/exec',{
+    method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify(sheetData)
-  }).catch(err=>console.log('Sheets error:',err));
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(data){
+    var realNum = (data && data.orderNum) ? data.orderNum : orderNumber;
+    orderNumber = realNum;
+    var updatedMsg = msg.replace(sheetData.orderNum, realNum);
+    successBadge.textContent=(lang==='ar'?'رقم طلبك: ':'Order Number: ')+'#'+realNum;
+    if(waWin && !waWin.closed) waWin.location.href='https://wa.me/96890942558?text='+encodeURIComponent(updatedMsg);
+  })
+  .catch(function(){
+    successBadge.textContent=(lang==='ar'?'رقم طلبك: ':'Order Number: ')+'#'+orderNumber;
+    if(waWin && !waWin.closed) waWin.location.href='https://wa.me/96890942558?text='+encodeURIComponent(msg);
+  });
 }
 
 // ===== setLang الصحيحة =====
