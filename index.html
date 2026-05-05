@@ -1100,7 +1100,6 @@ function sendWhatsApp(){
 
   fetch('https://script.google.com/macros/s/AKfycbxgAMKWCG1mEdOEQYYH8cRkudxxQHKH8YcU4k2adrq7h8B3pOY8z7_xB-Vy8uOWQgTY/exec',{
     method:'POST',
-    headers:{'Content-Type':'application/json'},
     body:JSON.stringify(sheetData)
   })
   .then(function(res){ return res.json(); })
