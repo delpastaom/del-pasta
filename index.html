@@ -604,6 +604,7 @@ const BREAKFAST_MENU = {
       {name:'محشي ورق عنب',nameEn:'Stuffed Vine Leaves',price:1.0,unit:'8 قطع',unitEn:'8 pcs'},
       {name:'محشي ملفوف',nameEn:'Stuffed Cabbage Rolls',price:1.0,unit:'8 قطع',unitEn:'8 pcs'},
       {name:'ميني بيتزا دجاج',nameEn:'Mini Chicken Pizza',price:2.2,unit:'10 قطع',unitEn:'10 pcs'},
+      {name:'ساندويش فلافل',nameEn:'Falafel Sandwich',price:4.7,unit:'20 قطعة',unitEn:'20 pcs'},
     ]
   },
   desserts: {
@@ -844,6 +845,13 @@ function selectMeal(type){
   document.getElementById('meal-'+type).classList.add('selected');
   hide('err-meal');
   const isBreakfast=type==='breakfast';
+  // إخفاء "توصيل مجاني" في خيار صحار عند اختيار الإفطار
+  const soharOpt=document.querySelector('#f-gov option[value="صحار"]');
+  if(soharOpt){
+    soharOpt.textContent=isBreakfast?'صحار':'صحار — توصيل مجاني ✓';
+    soharOpt.setAttribute('data-ar',isBreakfast?'صحار':'صحار — توصيل مجاني ✓');
+    soharOpt.setAttribute('data-en',isBreakfast?'Sohar':'Sohar — Free delivery ✓');
+  }
   // Step 2
   const ld2=document.getElementById('step2-lunch-dinner');
   const brkf2=document.getElementById('step2-breakfast');
