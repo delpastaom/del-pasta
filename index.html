@@ -1108,12 +1108,17 @@ function sendWhatsApp(){
   if(fallbackBtn){fallbackBtn.href=waUrl;fallbackBtn.style.display='flex';}
 
   // حفظ في جوجل شيتس بالخلفية وتحديث رقم الطلب عند الرد
+  console.log('[DelPasta] Sending to sheet:', sheetData);
   fetch('https://script.google.com/macros/s/AKfycbxgAMKWCG1mEdOEQYYH8cRkudxxQHKH8YcU4k2adrq7h8B3pOY8z7_xB-Vy8uOWQgTY/exec',{
     method:'POST',
     body:JSON.stringify(sheetData)
   })
-  .then(function(res){return res.json();})
+  .then(function(res){
+    console.log('[DelPasta] Sheet response status:', res.status, res.type);
+    return res.json();
+  })
   .then(function(data){
+    console.log('[DelPasta] Sheet response data:', data);
     if(data&&data.orderNum){
       orderNumber=data.orderNum;
       var updatedMsg=msg.replace(sheetData.orderNum,data.orderNum);
@@ -1121,7 +1126,9 @@ function sendWhatsApp(){
       if(fallbackBtn)fallbackBtn.href='https://wa.me/96890942558?text='+encodeURIComponent(updatedMsg);
     }
   })
-  .catch(function(){});
+  .catch(function(err){
+    console.error('[DelPasta] Sheet save FAILED:', err);
+  });
 }
 
 // ===== setLang الصحيحة =====
