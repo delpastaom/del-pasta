@@ -1111,7 +1111,8 @@ function sendWhatsApp(){
   console.log('[DelPasta] Sending to sheet:', sheetData);
   fetch('https://script.google.com/macros/s/AKfycbxgAMKWCG1mEdOEQYYH8cRkudxxQHKH8YcU4k2adrq7h8B3pOY8z7_xB-Vy8uOWQgTY/exec',{
     method:'POST',
-    body:JSON.stringify(sheetData)
+    body:JSON.stringify(sheetData),
+    keepalive:true
   })
   .then(function(res){
     console.log('[DelPasta] Sheet response status:', res.status, res.type);
